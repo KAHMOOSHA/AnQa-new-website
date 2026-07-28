@@ -1,7 +1,7 @@
-@import "tailwindcss";
-
 :root {
   color-scheme: dark;
+  --font-poppins: "Poppins";
+  --font-cormorant: "Cormorant Garamond";
   --mint: #67b293;
   --red: #e33b3b;
   --cream: #fbeccb;
