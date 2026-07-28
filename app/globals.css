@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #1d1916;
-  --paper: #f2ede4;
-  --paper-light: #fbf8f2;
-  --accent: #bb3b2e;
-  --gold: #c7954e;
-  --line: rgba(29, 25, 22, 0.18);
+  color-scheme: dark;
+  --ink: #f2ede4;
+  --paper: #0d0c0b;
+  --paper-light: #171411;
+  --accent: #e14c3d;
+  --gold: #d3a45f;
+  --line: rgba(242, 237, 228, 0.16);
 }
 
 * {
@@ -37,8 +38,9 @@ select {
 .site-shell {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 85% 10%, rgba(187, 59, 46, 0.14), transparent 28rem),
-    linear-gradient(115deg, transparent 0 70%, rgba(199, 149, 78, 0.09) 70% 71%, transparent 71%);
+    radial-gradient(circle at 85% 8%, rgba(225, 76, 61, 0.22), transparent 30rem),
+    radial-gradient(circle at 12% 85%, rgba(211, 164, 95, 0.08), transparent 32rem),
+    linear-gradient(115deg, transparent 0 70%, rgba(211, 164, 95, 0.07) 70% 70.15%, transparent 70.15%);
 }
 
 .site-header {
@@ -64,6 +66,7 @@ select {
 
 .brand-mark {
   background: var(--accent);
+  box-shadow: 0 0 1.5rem rgba(225, 76, 61, 0.45);
   border-radius: 50% 50% 10% 50%;
   display: inline-block;
   height: 1.05rem;
@@ -104,7 +107,8 @@ select {
 
 .languages a:hover,
 .languages a[aria-current="true"] {
-  border-color: var(--ink);
+  background: rgba(242, 237, 228, 0.08);
+  border-color: rgba(242, 237, 228, 0.65);
 }
 
 .hero,
@@ -153,7 +157,7 @@ select {
 .primary-link {
   align-items: center;
   background: var(--ink);
-  color: var(--paper-light);
+  color: var(--paper);
   display: inline-flex;
   font-size: 0.78rem;
   gap: 2.5rem;
@@ -169,8 +173,11 @@ select {
 }
 
 .placeholder-card {
-  background: var(--accent);
-  color: white;
+  background:
+    linear-gradient(120deg, rgba(225, 76, 61, 0.96), rgba(112, 27, 22, 0.97)),
+    var(--accent);
+  box-shadow: 0 2rem 7rem rgba(0, 0, 0, 0.35);
+  color: #fff8ef;
   display: grid;
   gap: 3rem;
   grid-template-columns: 1fr auto;
