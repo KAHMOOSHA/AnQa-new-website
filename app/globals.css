@@ -6,8 +6,9 @@
   --red: #e33b3b;
   --cream: #fbeccb;
   --brown: #41100b;
+  --black: #0d0f0e;
   --ink: var(--cream);
-  --paper: var(--brown);
+  --paper: var(--black);
   --paper-light: var(--cream);
   --accent: var(--red);
   --gold: var(--mint);
@@ -41,7 +42,7 @@ select {
 
 .site-shell {
   min-height: 100vh;
-  background: var(--brown);
+  background: var(--black);
 }
 
 .site-header {
@@ -110,7 +111,7 @@ select {
 .languages a[aria-current="true"] {
   background: var(--mint);
   border-color: var(--mint);
-  color: var(--brown);
+  color: var(--black);
 }
 
 .hero,
@@ -175,9 +176,10 @@ select {
 }
 
 .placeholder-card {
-  background: var(--red);
+  background: var(--cream);
+  border-top: 0.45rem solid var(--red);
   box-shadow: none;
-  color: var(--cream);
+  color: var(--brown);
   display: grid;
   gap: 3rem;
   grid-template-columns: 1fr auto;
@@ -194,6 +196,7 @@ select {
 }
 
 .event-label {
+  color: var(--red);
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -201,7 +204,8 @@ select {
 
 .event-status {
   align-self: end;
-  border: 1px solid var(--cream);
+  border: 1px solid var(--red);
+  color: var(--red);
   border-radius: 50%;
   display: grid;
   height: 8rem;
