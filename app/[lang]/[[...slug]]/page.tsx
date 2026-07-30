@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { HeroCarousel } from "../../components/HeroCarousel";
+import { LanguageMenu } from "../../components/LanguageMenu";
 
 const languages = ["en", "ar", "it", "fr"] as const;
 type Language = (typeof languages)[number];
@@ -149,23 +151,16 @@ export default async function LocalizedPage({
             </Link>
           ))}
         </nav>
-        <nav className="languages" aria-label="Languages">
-          {languages.map((language) => (
-            <Link
-              key={language}
-              href={`/${language}${pageSlugs[page] ? `/${pageSlugs[page]}` : ""}`}
-              hrefLang={language}
-              aria-current={language === lang ? "true" : undefined}
-            >
-              {language.toUpperCase()}
-            </Link>
-          ))}
-        </nav>
+        <LanguageMenu
+          currentLanguage={lang}
+          pagePath={pageSlugs[page]}
+        />
       </header>
 
       <main>
         {page === "home" ? (
           <>
+            <HeroCarousel language={lang} />
             <section className="hero">
               <p className="eyebrow">{t.eyebrow}</p>
               <h1>{t.hero}</h1>
