@@ -1,7 +1,24 @@
+@font-face {
+  font-family: "Thmanyah Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/thmanyah-sans-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Thmanyah Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/thmanyah-sans-bold.woff2") format("woff2");
+}
+
 :root {
   color-scheme: dark;
   --font-poppins: "Poppins";
   --font-cormorant: "Cormorant Garamond";
+  --font-arabic: "Thmanyah Sans";
   --mint: #67b293;
   --red: #e33b3b;
   --cream: #fbeccb;
@@ -239,14 +256,14 @@ select {
 }
 
 [dir="rtl"] {
-  font-family: Arial, Tahoma, sans-serif;
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
 }
 
 [dir="rtl"] .hero h1,
 [dir="rtl"] .page-hero h1,
 [dir="rtl"] .hero-copy p,
 [dir="rtl"] .page-intro {
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
   letter-spacing: -0.035em;
 }
 
