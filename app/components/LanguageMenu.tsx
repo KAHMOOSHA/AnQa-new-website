@@ -1,5 +1,6 @@
 import { Globe2 } from "lucide-react";
 import Link from "next/link";
+import styles from "./LanguageMenu.module.css";
 
 const languageNames = {
   en: "English",
@@ -18,12 +19,12 @@ export function LanguageMenu({
   pagePath: string;
 }) {
   return (
-    <details className="language-menu">
+    <details className={styles.menu}>
       <summary aria-label="Choose language" title="Choose language">
         <Globe2 aria-hidden="true" size={21} strokeWidth={1.8} />
-        <span className="sr-only">Choose language</span>
+        <span className={styles.srOnly}>Choose language</span>
       </summary>
-      <div className="language-dropdown">
+      <div className={styles.dropdown}>
         {(Object.keys(languageNames) as Language[]).map((language) => (
           <Link
             key={language}
@@ -34,7 +35,7 @@ export function LanguageMenu({
             aria-current={language === currentLanguage ? "true" : undefined}
           >
             <span>{languageNames[language]}</span>
-            <span className="language-code">{language.toUpperCase()}</span>
+            <span className={styles.code}>{language.toUpperCase()}</span>
           </Link>
         ))}
       </div>

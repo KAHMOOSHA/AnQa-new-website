@@ -1,0 +1,266 @@
+.siteShell {
+  background: var(--black);
+  min-height: 100vh;
+}
+
+.siteHeader {
+  align-items: center;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: auto 1fr auto;
+  margin: 0 auto;
+  padding: 1rem 5vw;
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  transition: transform 240ms ease;
+  will-change: transform;
+  width: 100%;
+  z-index: 20;
+  background-color: color-mix(in srgb, var(--red) 10%, transparent);
+  
+   /* background-color: var(--red) */
+}
+
+.headerHidden {
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  height: 3.65rem;
+  width: 2.1rem;
+}
+
+.brandLogoFrame {
+  display: block;
+  height: 3.65rem;
+  overflow: hidden;
+  position: relative;
+  width: 2.1rem;
+}
+
+.brandLogoImage {
+  filter: brightness(0) invert(93%) sepia(20%) saturate(501%) hue-rotate(345deg)
+    brightness(107%) contrast(97%);
+  height: 7.32rem;
+  max-width: none;
+  position: absolute;
+  transform: translate(-4.34rem, -1.56rem);
+  transition: filter 160ms ease;
+  width: 10.39rem;
+}
+
+.brand:hover .brandLogoImage,
+.brand:focus-visible .brandLogoImage {
+  filter: brightness(0) invert(72%) sepia(22%) saturate(691%) hue-rotate(103deg)
+    brightness(88%) contrast(86%);
+}
+
+.mainNav {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.6rem);
+  justify-content: center;
+}
+
+.mainNav a {
+  border-bottom: 1px solid transparent;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  padding-block: 0.35rem;
+  text-transform: uppercase;
+}
+
+.mainNav a:hover,
+.mainNav a[aria-current="page"] {
+  border-color: var(--mint);
+}
+
+.hero,
+.pageHero {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: clamp(4.5rem, 10vw, 9rem) 5vw clamp(4rem, 8vw, 7rem);
+}
+
+.hero h1,
+.pageHero h1 {
+  font-family: var(--font-poppins), Arial, sans-serif;
+  font-size: clamp(4rem, 12vw, 10.5rem);
+  font-weight: 700;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+  margin: 0;
+  max-width: 10ch;
+}
+
+.heroCopy {
+  align-items: end;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 28rem);
+  margin-top: 3rem;
+}
+
+.heroCopy p,
+.pageIntro {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.primaryLink {
+  align-items: center;
+  background: var(--cream);
+  color: var(--brown);
+  display: inline-flex;
+  font-size: 0.78rem;
+  gap: 2.5rem;
+  justify-content: space-between;
+  letter-spacing: 0.12em;
+  padding: 1.15rem 1.4rem;
+  text-transform: uppercase;
+  transition: background 180ms ease;
+}
+
+.primaryLink:hover {
+  background: var(--mint);
+}
+
+.placeholderCard {
+  background: var(--cream);
+  border-top: 0.45rem solid var(--red);
+  box-shadow: none;
+  color: var(--brown);
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr auto;
+  margin: 0 5vw 5rem;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.placeholderCard h2 {
+  font-family: var(--font-poppins), Arial, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+  margin: 0.5rem 0 0;
+}
+
+.eventLabel {
+  color: var(--red);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.eventStatus {
+  align-self: end;
+  border: 1px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  display: grid;
+  height: 8rem;
+  place-items: center;
+  text-align: center;
+  width: 8rem;
+}
+
+.pageHero h1 {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  max-width: none;
+}
+
+.pageIntro {
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+  max-width: 42rem;
+  padding-top: 2rem;
+}
+
+.siteFooter {
+  border-top: 1px solid var(--line);
+  display: flex;
+  font-size: 0.72rem;
+  justify-content: space-between;
+  letter-spacing: 0.08em;
+  margin: 0 5vw;
+  padding: 1.6rem 0 2.5rem;
+  text-transform: uppercase;
+}
+
+:global([dir="rtl"]) .hero h1,
+:global([dir="rtl"]) .pageHero h1,
+:global([dir="rtl"]) .heroCopy p,
+:global([dir="rtl"]) .pageIntro {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 900px) {
+  .siteHeader {
+    grid-template-columns: 1fr auto;
+  }
+
+  .mainNav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .heroCopy {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .siteHeader {
+    gap: 1rem;
+    padding-block: 1rem;
+  }
+
+  .brand,
+  .brandLogoFrame {
+    height: 3.2rem;
+    width: 1.84rem;
+  }
+
+  .brandLogoImage {
+    height: 6.42rem;
+    transform: translate(-3.81rem, -1.37rem);
+    width: 9.11rem;
+  }
+
+  .mainNav {
+    gap: 1.1rem;
+  }
+
+  .mainNav a {
+    white-space: nowrap;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.6rem, 22vw, 6.5rem);
+  }
+
+  .placeholderCard {
+    grid-template-columns: 1fr;
+  }
+
+  .eventStatus {
+    height: 6rem;
+    width: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .siteHeader {
+    transition: none;
+  }
+}

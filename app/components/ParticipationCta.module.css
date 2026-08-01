@@ -1,0 +1,87 @@
+.cta {
+  align-items: end;
+  background: var(--mint);
+  color: var(--black);
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 34rem);
+  margin: 0 5vw 5rem;
+  padding: clamp(2.5rem, 6vw, 6rem);
+}
+
+.cta h2 {
+  font-family: var(--font-poppins), Arial, sans-serif;
+  font-size: clamp(3rem, 7vw, 7.5rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.94;
+  margin: 0;
+  max-width: 9ch;
+}
+
+.link {
+  align-items: center;
+  background: var(--black);
+  color: var(--cream);
+  display: flex;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  gap: 2rem;
+  justify-content: space-between;
+  line-height: 1.45;
+  padding: 1.4rem 1.5rem;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.link svg {
+  flex: 0 0 auto;
+}
+
+.link:hover,
+.link:focus-visible {
+  background: var(--red);
+  color: var(--cream);
+  outline: none;
+}
+
+.howToJoin {
+  background: var(--cream);
+  color: var(--brown);
+  margin: 0 5vw 5rem;
+  padding: clamp(2.5rem, 6vw, 6rem);
+  scroll-margin-top: 7rem;
+}
+
+.howToJoin h2 {
+  font-family: var(--font-poppins), Arial, sans-serif;
+  font-size: clamp(2.8rem, 7vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.howToJoin > p:last-child {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.5;
+  margin: 2rem 0 0;
+  max-width: 42rem;
+}
+
+:global([dir="rtl"]) .cta h2,
+:global([dir="rtl"]) .link,
+:global([dir="rtl"]) .howToJoin h2,
+:global([dir="rtl"]) .howToJoin > p:last-child {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 900px) {
+  .cta {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+}

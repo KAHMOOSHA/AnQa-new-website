@@ -4,114 +4,132 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import styles from "./HeroCarousel.module.css";
 
 type Language = "en" | "ar" | "it" | "fr";
 
-const content: Record<Language, {
+const slides = [
+  {
+    id: "palestinians",
+    image: "/images/All thats-left-to-me-Odysseus-Telemachus 01.jpg",
+  },
+  {
+    id: "meeting-place",
+    image: "/images/Anqa - All that's left to me - Backstage 06.jpeg",
+  },
+  {
+    id: "next-chapter",
+    image: "/images/All thats left to me - Antinous.JPG",
+  },
+] as const;
+
+type SlideId = (typeof slides)[number]["id"];
+type SlideCopy = { alt: string; title: string; text: string };
+type CarouselCopy = {
+  label: string;
+  slidesLabel: string;
   previous: string;
   next: string;
   goTo: string;
-  slides: { image: string; alt: string; title: string; text: string }[];
-}> = {
+  slides: Record<SlideId, SlideCopy>;
+};
+
+const content: Record<Language, CarouselCopy> = {
   en: {
+    label: "AnQa highlights",
+    slidesLabel: "Carousel slides",
     previous: "Previous slide",
     next: "Next slide",
     goTo: "Go to slide",
-    slides: [
-      {
-        image: "/images/theatre-performance-1.jpg",
-        alt: "Two actors performing under dramatic stage lighting",
-        title: "Stories take flight.",
-        text: "AnQa creates bold theatre that moves between languages, places, and people.",
+    slides: {
+      palestinians: {
+        alt: "Actors performing All That's Left to Me on stage",
+        title: "Palestinians are your eyes",
+        text: '"Palestinians are your eyes, your tattoo. Palestinians are your name, your dreams, your thoughts, and your scarf."',
       },
-      {
-        image: "/images/theatre-performance-2.jpg",
+      "meeting-place": {
         alt: "Actor in silhouette under blue stage light",
-        title: "The stage is a meeting place.",
+        title: "And We need your help.",
         text: "Artists and audiences come together through live, immediate storytelling.",
       },
-      {
-        image: "/images/theatre-stage-lights.jpg",
+      "next-chapter": {
         alt: "Stage lights crossing above a theatre audience",
         title: "The next chapter begins here.",
         text: "New performances, collaborations, and encounters are taking shape.",
       },
-    ],
+    },
   },
   ar: {
+    label: "أبرز أعمال عنقاء",
+    slidesLabel: "شرائح العرض",
     previous: "الشريحة السابقة",
     next: "الشريحة التالية",
     goTo: "انتقل إلى الشريحة",
-    slides: [
-      {
-        image: "/images/theatre-performance-1.jpg",
-        alt: "ممثلان يؤديان تحت إضاءة مسرحية درامية",
-        title: "حين تحلّق الحكايات.",
+    slides: {
+      palestinians: {
+        alt: "ممثلون يؤدون عرض كل ما تبقى لي على المسرح",
+        title: "الفلسطينيون هم عيناك",
         text: "تصنع عنقاء مسرحاً جريئاً يعبر بين اللغات والأماكن والناس.",
       },
-      {
-        image: "/images/theatre-performance-2.jpg",
+      "meeting-place": {
         alt: "ممثل تحت ضوء مسرحي أزرق",
         title: "المسرح مساحة للقاء.",
         text: "يجتمع الفنانون والجمهور من خلال حكايات حيّة ومباشرة.",
       },
-      {
-        image: "/images/theatre-stage-lights.jpg",
+      "next-chapter": {
         alt: "أضواء مسرحية تتقاطع فوق الجمهور",
         title: "الفصل القادم يبدأ هنا.",
         text: "عروض وشراكات ولقاءات جديدة قيد التشكّل.",
       },
-    ],
+    },
   },
   it: {
+    label: "In primo piano da AnQa",
+    slidesLabel: "Diapositive del carosello",
     previous: "Slide precedente",
     next: "Slide successiva",
     goTo: "Vai alla slide",
-    slides: [
-      {
-        image: "/images/theatre-performance-1.jpg",
-        alt: "Due attori in scena sotto una luce teatrale",
-        title: "Le storie prendono il volo.",
+    slides: {
+      palestinians: {
+        alt: "Attori in scena nello spettacolo All That's Left to Me",
+        title: "I palestinesi sono i tuoi occhi",
         text: "AnQa crea un teatro audace che attraversa lingue, luoghi e persone.",
       },
-      {
-        image: "/images/theatre-performance-2.jpg",
+      "meeting-place": {
         alt: "Attore in silhouette sotto una luce blu",
         title: "Il palco è un luogo d’incontro.",
         text: "Artisti e pubblico si incontrano attraverso storie vive e immediate.",
       },
-      {
-        image: "/images/theatre-stage-lights.jpg",
+      "next-chapter": {
         alt: "Fasci di luce sopra il pubblico di un teatro",
         title: "Il prossimo capitolo inizia qui.",
         text: "Nuovi spettacoli, collaborazioni e incontri stanno prendendo forma.",
       },
-    ],
+    },
   },
   fr: {
+    label: "À la une chez AnQa",
+    slidesLabel: "Diapositives du carrousel",
     previous: "Diapositive précédente",
     next: "Diapositive suivante",
     goTo: "Aller à la diapositive",
-    slides: [
-      {
-        image: "/images/theatre-performance-1.jpg",
-        alt: "Deux comédiens sous un éclairage de scène",
-        title: "Les histoires prennent leur envol.",
+    slides: {
+      palestinians: {
+        alt: "Des comédiens jouent All That's Left to Me sur scène",
+        title: "Les Palestiniens sont tes yeux",
         text: "AnQa crée un théâtre audacieux qui traverse les langues, les lieux et les publics.",
       },
-      {
-        image: "/images/theatre-performance-2.jpg",
+      "meeting-place": {
         alt: "Comédien en silhouette sous une lumière bleue",
         title: "La scène est un lieu de rencontre.",
         text: "Artistes et publics se retrouvent autour de récits vivants et immédiats.",
       },
-      {
-        image: "/images/theatre-stage-lights.jpg",
+      "next-chapter": {
         alt: "Faisceaux lumineux au-dessus d’un public",
         title: "Le prochain chapitre commence ici.",
         text: "De nouveaux spectacles, collaborations et rencontres prennent forme.",
       },
-    ],
+    },
   },
 };
 
@@ -144,46 +162,50 @@ export function HeroCarousel({ language }: { language: Language }) {
 
   return (
     <section
-      className="carousel"
+      className={styles.carousel}
       aria-roledescription="carousel"
-      aria-label="AnQa highlights"
+      aria-label={t.label}
       dir={direction}
     >
-      <div className="carousel-viewport" ref={emblaRef}>
-        <div className="carousel-container">
-          {t.slides.map((slide, index) => (
-            <article
-              className="carousel-slide"
-              aria-roledescription="slide"
-              aria-label={`${index + 1} / ${t.slides.length}`}
-              key={slide.image}
-            >
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                priority={index === 0}
-                sizes="100vw"
-              />
-              <div className="carousel-shade" aria-hidden="true" />
-              <div className="carousel-copy">
-                <h1>{slide.title}</h1>
-                <p>{slide.text}</p>
-              </div>
-            </article>
-          ))}
+      <div className={styles.viewport} ref={emblaRef}>
+        <div className={styles.container}>
+          {slides.map((slide, index) => {
+            const translatedSlide = t.slides[slide.id];
+
+            return (
+              <article
+                className={styles.slide}
+                aria-roledescription="slide"
+                aria-label={`${index + 1} / ${slides.length}`}
+                key={slide.id}
+              >
+                <Image
+                  src={slide.image}
+                  alt={translatedSlide.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="100vw"
+                />
+                <div className={styles.shade} aria-hidden="true" />
+                <div className={styles.copy}>
+                  <h1>{translatedSlide.title}</h1>
+                  <p>{translatedSlide.text}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
 
-      <div className="carousel-controls">
+      <div className={styles.controls}>
         <button type="button" onClick={scrollPrevious} aria-label={t.previous}>
           <ChevronLeft aria-hidden="true" />
         </button>
-        <div className="carousel-dots" role="group" aria-label="Slides">
-          {t.slides.map((slide, index) => (
+        <div className={styles.dots} role="group" aria-label={t.slidesLabel}>
+          {slides.map((slide, index) => (
             <button
               type="button"
-              key={slide.image}
+              key={slide.id}
               aria-label={`${t.goTo} ${index + 1}`}
               aria-current={selectedIndex === index ? "true" : undefined}
               onClick={() => emblaApi?.scrollTo(index)}
