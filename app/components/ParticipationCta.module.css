@@ -1,15 +1,33 @@
-.cta {
-  align-items: end;
-  background: var(--mint);
+.splitCta {
+  background: var(--black);
   color: var(--black);
   display: grid;
-  gap: clamp(2.5rem, 6vw, 6rem);
-  grid-template-columns: minmax(0, 1fr) minmax(20rem, 34rem);
-  margin: 0 5vw 5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 var(--section-inline) var(--section-gap);
+  min-height: clamp(34rem, 56vw, 48rem);
+  overflow: hidden;
+}
+
+.splitImage {
+  background-image: url("/images/All thats left to me - Standing Ovation.jpg");
+  background-position: 52% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+}
+
+.splitContent {
+  align-items: flex-start;
+  background: var(--mint);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 7vw, 7rem);
+  justify-content: space-between;
   padding: clamp(2.5rem, 6vw, 6rem);
 }
 
-.cta h2 {
+.splitContent h2,
+.fullBleedContent h2 {
   font-family: var(--font-poppins), Arial, sans-serif;
   font-size: clamp(3rem, 7vw, 7.5rem);
   font-weight: 700;
@@ -19,9 +37,55 @@
   max-width: 9ch;
 }
 
+.fullBleedCta {
+  align-items: flex-end;
+  background-image: url("/images/All thats left to me - Standing Ovation.jpg");
+  background-position: 52% center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid var(--cream);
+  display: flex;
+  isolation: isolate;
+  margin: 0 var(--section-inline) var(--section-gap);
+  min-height: 90vh;
+  min-height: 90svh;
+  overflow: hidden;
+  position: relative;
+}
+
+.fullBleedCta::before {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(13, 15, 14, 0.94) 0%,
+      rgba(13, 15, 14, 0.76) 42%,
+      rgba(13, 15, 14, 0.18) 82%
+    ),
+    linear-gradient(0deg, rgba(13, 15, 14, 0.84) 0%, transparent 55%);
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.fullBleedContent {
+  align-items: end;
+  display: grid;
+  gap: clamp(2.5rem, 7vw, 7rem);
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 34rem);
+  padding: clamp(2.5rem, 6vw, 6rem);
+  width: 100%;
+}
+
+.fullBleedContent h2 {
+  color: var(--cream);
+  text-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.36);
+}
+
 .link {
   align-items: center;
   background: var(--black);
+  border: 1px solid var(--red);
   color: var(--cream);
   display: flex;
   font-size: clamp(0.95rem, 1.5vw, 1.2rem);
@@ -46,42 +110,68 @@
   outline: none;
 }
 
-.howToJoin {
-  background: var(--cream);
-  color: var(--brown);
-  margin: 0 5vw 5rem;
-  padding: clamp(2.5rem, 6vw, 6rem);
-  scroll-margin-top: 7rem;
-}
-
-.howToJoin h2 {
-  font-family: var(--font-poppins), Arial, sans-serif;
-  font-size: clamp(2.8rem, 7vw, 7rem);
-  font-weight: 700;
-  letter-spacing: -0.065em;
-  line-height: 0.95;
-  margin: 0;
-}
-
-.howToJoin > p:last-child {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  line-height: 1.5;
-  margin: 2rem 0 0;
-  max-width: 42rem;
-}
-
-:global([dir="rtl"]) .cta h2,
-:global([dir="rtl"]) .link,
-:global([dir="rtl"]) .howToJoin h2,
-:global([dir="rtl"]) .howToJoin > p:last-child {
+:global([dir="rtl"]) .splitContent h2,
+:global([dir="rtl"]) .fullBleedContent h2,
+:global([dir="rtl"]) .link {
   font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
   letter-spacing: -0.035em;
 }
 
+:global([dir="rtl"]) .fullBleedCta::before {
+  background:
+    linear-gradient(
+      270deg,
+      rgba(13, 15, 14, 0.94) 0%,
+      rgba(13, 15, 14, 0.76) 42%,
+      rgba(13, 15, 14, 0.18) 82%
+    ),
+    linear-gradient(0deg, rgba(13, 15, 14, 0.84) 0%, transparent 55%);
+}
+
 @media (max-width: 900px) {
-  .cta {
+  .splitCta {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .splitImage {
+    aspect-ratio: 16 / 10;
+    min-height: 18rem;
+  }
+
+  .fullBleedContent {
     align-items: start;
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .fullBleedCta {
+    background-position: 53% center;
+    min-height: 90vh;
+    min-height: 90svh;
+  }
+
+  .fullBleedContent {
+    gap: 2rem;
+    padding: clamp(1.5rem, 7vw, 2.5rem);
+  }
+
+  .fullBleedContent h2 {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
+  }
+
+  .link {
+    padding: 1.1rem 1.2rem;
+  }
+
+  .fullBleedCta::before,
+  :global([dir="rtl"]) .fullBleedCta::before {
+    background: linear-gradient(
+      0deg,
+      rgba(13, 15, 14, 0.96) 0%,
+      rgba(13, 15, 14, 0.68) 58%,
+      rgba(13, 15, 14, 0.18) 100%
+    );
   }
 }

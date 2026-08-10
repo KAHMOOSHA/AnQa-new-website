@@ -1,0 +1,38 @@
+.section {
+  background: var(--mint);
+  color: var(--brown);
+  margin: 0 var(--section-inline) var(--section-gap);
+  padding: clamp(3rem, 7vw, 7rem);
+}
+
+.section h2 {
+  font-size: clamp(3rem, 8vw, 8rem);
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+  margin: 0;
+  max-width: 10ch;
+  text-transform: uppercase;
+}
+
+.sustainabilityNote {
+  background: rgba(251, 236, 203, 0.72);
+  color: var(--brown);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.55;
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+  max-width: 58rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.sustainabilityNote strong {
+  color: var(--red);
+  font-size: inherit;
+  font-weight: 700;
+}
+
+:global([dir="rtl"]) .section h2,
+:global([dir="rtl"]) .sustainabilityNote {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.035em;
+}

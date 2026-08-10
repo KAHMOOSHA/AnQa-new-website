@@ -18,6 +18,7 @@
   border: 1px solid var(--line);
   border-radius: 50%;
   cursor: pointer;
+  color: var(--page-text);
   display: flex;
   height: 2.55rem;
   justify-content: center;
@@ -35,7 +36,7 @@
 .menu[open] summary {
   background: var(--mint);
   border-color: var(--mint);
-  color: var(--black);
+  color: var(--brown);
   outline: none;
 }
 
@@ -64,7 +65,7 @@
 .dropdown a:focus-visible,
 .dropdown a[aria-current="true"] {
   background: var(--mint);
-  color: var(--black);
+  color: var(--brown);
   outline: none;
 }
 

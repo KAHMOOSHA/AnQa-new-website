@@ -19,17 +19,37 @@
   --font-poppins: "Poppins";
   --font-cormorant: "Cormorant Garamond";
   --font-arabic: "Thmanyah Sans";
+  --section-gap: clamp(3.5rem, 6vw, 5rem);
+  --section-inline: 5vw;
   --mint: #67b293;
   --red: #e33b3b;
   --cream: #fbeccb;
   --brown: #41100b;
   --black: #0d0f0e;
-  --ink: var(--cream);
-  --paper: var(--black);
+  --page-bg: var(--black);
+  --page-text: var(--cream);
+  --page-muted: rgba(251, 236, 203, 0.76);
+  --header-idle: color-mix(in srgb, var(--red) 10%, transparent);
+  --header-solid: var(--black);
+  --brand-filter: brightness(0) invert(93%) sepia(20%) saturate(501%)
+    hue-rotate(345deg) brightness(107%) contrast(97%);
+  --ink: var(--page-text);
+  --paper: var(--page-bg);
   --paper-light: var(--cream);
   --accent: var(--red);
   --gold: var(--mint);
   --line: rgba(251, 236, 203, 0.2);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page-bg: #ffffff;
+  --page-text: var(--brown);
+  --page-muted: rgba(65, 16, 11, 0.72);
+  --header-idle: rgba(255, 255, 255, 0.94);
+  --header-solid: #ffffff;
+  --brand-filter: none;
+  --line: rgba(65, 16, 11, 0.22);
 }
 
 * {
@@ -45,6 +65,13 @@ body {
   color: var(--ink);
   font-family: var(--font-poppins), Arial, sans-serif;
   margin: 0;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
 }
 
 a {

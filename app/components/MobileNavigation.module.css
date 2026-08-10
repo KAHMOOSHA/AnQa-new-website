@@ -1,0 +1,148 @@
+.root {
+  display: none;
+}
+
+.toggle {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--page-text);
+  cursor: pointer;
+  display: flex;
+  height: 2.55rem;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  transition: background-color 180ms ease, border-color 180ms ease;
+  width: 2.55rem;
+  z-index: 2;
+}
+
+.toggle:hover,
+.toggle:focus-visible,
+.open .toggle {
+  background: var(--mint);
+  border-color: var(--mint);
+  color: var(--brown);
+  outline: none;
+}
+
+.icon {
+  height: 0.9rem;
+  position: relative;
+  width: 1.15rem;
+}
+
+.icon span {
+  background: currentColor;
+  height: 1px;
+  inset-inline: 0;
+  position: absolute;
+  transition: top 200ms ease, transform 200ms ease;
+}
+
+.icon span:first-child {
+  top: 0.2rem;
+}
+
+.icon span:last-child {
+  top: 0.68rem;
+}
+
+.open .icon span:first-child {
+  top: 0.44rem;
+  transform: rotate(45deg);
+}
+
+.open .icon span:last-child {
+  top: 0.44rem;
+  transform: rotate(-45deg);
+}
+
+.panel {
+  background: var(--page-bg);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  height: calc(100svh - 100%);
+  inset-inline: 0;
+  opacity: 0;
+  overflow-y: auto;
+  padding: clamp(2rem, 7vw, 4rem) 5vw 2rem;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  transform: translateY(-1rem);
+  transition: opacity 220ms ease, transform 220ms ease, visibility 0s 220ms;
+  visibility: hidden;
+}
+
+.open .panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 220ms ease, transform 220ms ease;
+  visibility: visible;
+}
+
+.navigation {
+  display: grid;
+}
+
+.navigation a {
+  border-bottom: 1px solid var(--line);
+  color: var(--page-text);
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  padding: 0.7em 0;
+  transition: color 160ms ease, padding-inline-start 160ms ease;
+}
+
+.navigation a:hover,
+.navigation a:focus-visible,
+.navigation a[aria-current="page"] {
+  color: var(--mint);
+  padding-inline-start: 0.25rem;
+  outline: none;
+}
+
+.instagram {
+  align-items: center;
+  color: var(--page-text);
+  display: flex;
+  font-size: 0.85rem;
+  font-weight: 600;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 2rem;
+  transition: color 160ms ease;
+}
+
+.instagram:hover,
+.instagram:focus-visible {
+  color: var(--red);
+  outline: none;
+}
+
+.instagram svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .root {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .icon span,
+  .panel,
+  .navigation a {
+    transition: none;
+  }
+}

@@ -1,0 +1,216 @@
+.section {
+  background: var(--page-bg);
+  color: var(--page-text);
+  margin: 0 auto var(--section-gap);
+  max-width: 1440px;
+  overflow: hidden;
+  padding: clamp(3rem, 6vw, 6rem) 5vw;
+  padding-block-start: 0;
+}
+
+.header {
+  align-items: start;
+  border-block-end: 2px solid var(--page-text);
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
+  padding-block-end: clamp(2rem, 5vw, 4rem);
+}
+
+.headerImageFrame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  position: relative;
+}
+
+.headerImage {
+  object-fit: cover;
+  object-position: 60% center;
+}
+
+.header h2 {
+  font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+  margin: 0;
+  max-width: 9ch;
+  text-transform: uppercase;
+}
+
+.chapter {
+  border-block-end: 1px solid var(--line);
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(14rem, 0.75fr) minmax(0, 1.25fr);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+.chapter:last-child {
+  border-block-end: 0;
+  padding-block-end: 0;
+}
+
+.chapterHeading h3 {
+  font-size: clamp(2rem, 3.8vw, 4rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  margin: 0;
+  max-width: 18ch;
+  overflow-wrap: anywhere;
+}
+
+.chapterHeading p {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 1rem 0 0;
+  text-transform: uppercase;
+}
+
+.chapterBody > p {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 48rem;
+  overflow-wrap: anywhere;
+}
+
+.chapterBody > p + p {
+  margin-top: 1.5rem;
+}
+
+.detailList {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+}
+
+.detailList > div {
+  display: grid;
+  gap: clamp(1rem, 3vw, 3rem);
+  grid-template-columns: minmax(10rem, 0.55fr) minmax(0, 1.45fr);
+}
+
+.detailList dt {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.detailList dt::before {
+  background: var(--red);
+  content: "";
+  flex: 0 0 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.detailList dd {
+  color: var(--page-muted);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.55;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.resourcesChapter {
+  background: var(--mint);
+  border: 0;
+  color: var(--brown);
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+.resourcesChapter .detailList dt::before {
+  background: var(--brown);
+}
+
+.resourcesChapter .detailList dd {
+  color: rgba(65, 16, 11, 0.78);
+}
+
+.optionalNote {
+  background: var(--cream);
+  border-inline-start: 0.35rem solid var(--red);
+  color: var(--brown);
+  font-size: clamp(1rem, 1.5vw, 1.2rem) !important;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.optionalNote strong {
+  color: var(--red);
+}
+
+:global([dir="rtl"]) .section {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+}
+
+:global([dir="rtl"]) .chapterBody > p,
+:global([dir="rtl"]) .detailList dd {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+}
+
+@media (max-width: 900px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .headerImageFrame {
+    aspect-ratio: 16 / 10;
+  }
+
+  .chapter {
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .chapterHeading h3 {
+    max-width: 22ch;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 2rem 1.25rem;
+    padding-block-start: 0;
+  }
+
+  .header {
+    gap: 1.75rem;
+    padding-block-end: 2rem;
+  }
+
+  .headerImageFrame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .header h2 {
+    font-size: clamp(2.75rem, 14vw, 4.25rem);
+    max-width: 10ch;
+  }
+
+  .chapter {
+    padding-block: 2.75rem;
+  }
+
+  .chapterHeading h3 {
+    font-size: clamp(1.85rem, 9vw, 2.75rem);
+    max-width: none;
+  }
+
+  .detailList > div {
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .resourcesChapter {
+    padding: 2rem 1.25rem;
+  }
+
+  .optionalNote {
+    padding: 1.25rem;
+  }
+}

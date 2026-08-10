@@ -6,6 +6,7 @@ type AutoHideHeaderProps = {
   children: ReactNode;
   className: string;
   hiddenClassName: string;
+  scrolledClassName: string;
 };
 
 const TOP_THRESHOLD = 20;
@@ -15,17 +16,22 @@ export function AutoHideHeader({
   children,
   className,
   hiddenClassName,
+  scrolledClassName,
 }: AutoHideHeaderProps) {
   const previousScrollPosition = useRef(0);
   const [isHidden, setIsHidden] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     previousScrollPosition.current = window.scrollY;
+    setHasScrolled(window.scrollY > TOP_THRESHOLD);
 
     function handleScroll() {
       const currentScrollPosition = window.scrollY;
       const scrollDifference =
         currentScrollPosition - previousScrollPosition.current;
+
+      setHasScrolled(currentScrollPosition > TOP_THRESHOLD);
 
       if (currentScrollPosition <= TOP_THRESHOLD) {
         setIsHidden(false);
@@ -43,6 +49,7 @@ export function AutoHideHeader({
 
   const headerClassName = [
     className,
+    hasScrolled ? scrolledClassName : "",
     isHidden ? hiddenClassName : "",
   ]
     .filter(Boolean)

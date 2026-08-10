@@ -1,0 +1,222 @@
+.section {
+  background: var(--cream);
+  color: var(--brown);
+  margin: 0 var(--section-inline) var(--section-gap);
+  padding: clamp(2.5rem, 6vw, 6rem);
+  scroll-margin-top: 7rem;
+}
+
+.header {
+  align-items: end;
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.section h2 {
+  font-family: var(--font-poppins), Arial, sans-serif;
+  font-size: clamp(2.8rem, 7vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.premiereStatement {
+  align-items: baseline;
+  border-block: 0.12em solid var(--brown);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-poppins), Arial, sans-serif;
+  font-size: clamp(1.9rem, 4.4vw, 4.75rem);
+  font-weight: 800;
+  gap: 0 0.24em;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+  margin: 0 0 clamp(1.75rem, 4vw, 3.5rem);
+  padding: 0.2em 0 0.25em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.premiereStatement span:first-child {
+  color: var(--brown);
+}
+
+.premiereStatement span:last-child {
+  color: var(--red);
+}
+
+.eventDate {
+  align-content: center;
+  aspect-ratio: 1;
+  background: var(--red);
+  box-shadow: 0.65rem 0.65rem 0 var(--brown);
+  color: var(--cream);
+  display: grid;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  width: clamp(10rem, 17vw, 14rem);
+}
+
+.dateMonth {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.dateDay {
+  font-size: clamp(4rem, 8vw, 7rem);
+  letter-spacing: -0.08em;
+  line-height: 0.82;
+}
+
+.dateYear {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-top: 0.65rem;
+}
+
+.introduction {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.5;
+  margin: 2rem 0 0;
+  max-width: 50rem;
+}
+
+.applicationProcess {
+  border-top: 1px solid rgba(65, 16, 11, 0.28);
+  display: grid;
+  gap: clamp(3rem, 7vw, 7rem);
+  grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
+  margin-top: clamp(3rem, 7vw, 6rem);
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.applicationHeading h3 {
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  margin: 0;
+  max-width: 12ch;
+}
+
+.emailLinks {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+  margin-top: 2rem;
+}
+
+.emailLink {
+  align-items: center;
+  color: var(--red);
+  display: inline-flex;
+  font-size: clamp(0.8rem, 1.25vw, 1rem);
+  gap: 0.6rem;
+  overflow-wrap: anywhere;
+  padding-bottom: 0.35rem;
+}
+
+.emailLink:hover,
+.emailLink:focus-visible {
+  border-bottom: 1px solid var(--brown);
+  color: var(--brown);
+  outline: none;
+}
+
+.emailLink svg {
+  flex: 0 0 auto;
+  height: 1rem;
+  width: 1rem;
+}
+
+.requirementsIntro {
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+}
+
+.requirements {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.requirements li {
+  border-top: 1px solid rgba(65, 16, 11, 0.2);
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: auto 1fr;
+  padding: 1.5rem 0;
+}
+
+.requirements li:last-child {
+  border-bottom: 1px solid rgba(65, 16, 11, 0.2);
+}
+
+.requirementNumber {
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding-top: 0.25rem;
+}
+
+.requirements strong {
+  font-size: 1.05rem;
+}
+
+.requirements p {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  margin: 0.45rem 0 0;
+}
+
+.note {
+  background: var(--brown);
+  color: var(--cream);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  line-height: 1.55;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  max-width: 62rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.note strong {
+  color: var(--mint);
+}
+
+:global([dir="rtl"]) .section h2,
+:global([dir="rtl"]) .premiereStatement,
+:global([dir="rtl"]) .introduction,
+:global([dir="rtl"]) .applicationHeading h3,
+:global([dir="rtl"]) .requirements p,
+:global([dir="rtl"]) .note {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 900px) {
+  .applicationProcess {
+    grid-template-columns: 1fr;
+  }
+
+  .applicationHeading h3 {
+    max-width: 18ch;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .eventDate {
+    order: -1;
+    width: min(52vw, 12rem);
+  }
+}

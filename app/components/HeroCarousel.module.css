@@ -1,6 +1,7 @@
 .carousel {
   height: 90vh;
   height: 90svh;
+  margin-block-end: var(--section-gap);
   min-height: 34rem;
   overflow: hidden;
   position: relative;

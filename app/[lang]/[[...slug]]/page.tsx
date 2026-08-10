@@ -3,12 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AutoHideHeader } from "../../components/AutoHideHeader";
+import { AboutProjectSection } from "../../components/AboutProjectSection";
 import { HeroCarousel } from "../../components/HeroCarousel";
+import { HowToJoinSection } from "../../components/HowToJoinSection";
 import { LanguageMenu } from "../../components/LanguageMenu";
-import {
-  HowToJoinSection,
-  ParticipationCta,
-} from "../../components/ParticipationCta";
+import { MobileNavigation } from "../../components/MobileNavigation";
+import { ParticipationCta } from "../../components/ParticipationCta";
+import { ThemeToggle } from "../../components/ThemeToggle";
+import { WhoThisProjectIsFor } from "../../components/WhoThisProjectIsFor";
 import styles from "./page.module.css";
 
 const languages = ["en", "ar", "it", "fr"] as const;
@@ -189,6 +191,7 @@ export default async function LocalizedPage({
       <AutoHideHeader
         className={styles.siteHeader}
         hiddenClassName={styles.headerHidden}
+        scrolledClassName={styles.headerScrolled}
       >
         <Link className={styles.brand} href={`/${lang}`}>
           <span className={styles.brandLogoFrame}>
@@ -213,13 +216,24 @@ export default async function LocalizedPage({
             </Link>
           ))}
         </nav>
-        <LanguageMenu currentLanguage={lang} pagePath={pageSlugs[page]} />
+        <div className={styles.headerActions}>
+          <ThemeToggle />
+          <LanguageMenu currentLanguage={lang} pagePath={pageSlugs[page]} />
+          <MobileNavigation
+            links={(Object.keys(pageSlugs) as Page[]).map((item) => ({
+              current: item === page,
+              href: `/${lang}${pageSlugs[item] ? `/${pageSlugs[item]}` : ""}`,
+              label: t.nav[item],
+            }))}
+          />
+        </div>
       </AutoHideHeader>
 
       <main>
         {page === "home" ? (
           <>
             <HeroCarousel language={lang} />
+            {/* Original homepage introduction — parked until its content is finalized.
             <section className={styles.hero}>
               <p className="eyebrow">{t.eyebrow}</p>
               <h1>{t.hero}</h1>
@@ -231,6 +245,8 @@ export default async function LocalizedPage({
                 </a>
               </div>
             </section>
+            */}
+            {/* Original upcoming-event placeholder — parked until event details are finalized.
             <section className={styles.placeholderCard} id="upcoming-event">
               <div>
                 <span className={styles.eventLabel}>{t.eventLabel}</span>
@@ -238,16 +254,25 @@ export default async function LocalizedPage({
               </div>
               <span className={styles.eventStatus}>{t.eventStatus}</span>
             </section>
+            */}
             <ParticipationCta language={lang} />
           </>
         ) : (
           <>
-            <section className={styles.pageHero}>
-              <p className="eyebrow">AnQa Theatre</p>
-              <h1>{t.nav[page]}</h1>
-              <p className={styles.pageIntro}>{t.pageIntro[page]}</p>
-            </section>
-            {page === "support" && <HowToJoinSection language={lang} />}
+            {page !== "support" && (
+              <section className={styles.pageHero}>
+                <p className="eyebrow">AnQa Theatre</p>
+                <h1>{t.nav[page]}</h1>
+                <p className={styles.pageIntro}>{t.pageIntro[page]}</p>
+              </section>
+            )}
+            {page === "about" && <AboutProjectSection />}
+            {page === "support" && (
+              <>
+                <HowToJoinSection language={lang} />
+                <WhoThisProjectIsFor />
+              </>
+            )}
           </>
         )}
       </main>
