@@ -115,7 +115,6 @@
   display: inline-flex;
   font-size: clamp(0.8rem, 1.25vw, 1rem);
   gap: 0.6rem;
-  overflow-wrap: anywhere;
   padding-bottom: 0.35rem;
 }
 

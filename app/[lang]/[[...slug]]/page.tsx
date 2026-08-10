@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AutoHideHeader } from "../../components/AutoHideHeader";
 import { AboutProjectSection } from "../../components/AboutProjectSection";
+import { AboutUsSection } from "../../components/AboutUsSection";
 import { HeroCarousel } from "../../components/HeroCarousel";
 import { HowToJoinSection } from "../../components/HowToJoinSection";
 import { LanguageMenu } from "../../components/LanguageMenu";
@@ -259,14 +260,19 @@ export default async function LocalizedPage({
           </>
         ) : (
           <>
-            {page !== "support" && (
+            {page !== "support" && page !== "about" && (
               <section className={styles.pageHero}>
                 <p className="eyebrow">AnQa Theatre</p>
                 <h1>{t.nav[page]}</h1>
                 <p className={styles.pageIntro}>{t.pageIntro[page]}</p>
               </section>
             )}
-            {page === "about" && <AboutProjectSection />}
+            {page === "about" && (
+              <>
+                <AboutUsSection />
+                <AboutProjectSection />
+              </>
+            )}
             {page === "support" && (
               <>
                 <HowToJoinSection language={lang} />

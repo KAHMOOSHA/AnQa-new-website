@@ -1,0 +1,129 @@
+.section {
+  color: var(--page-text);
+  margin: 0 auto var(--section-gap);
+  max-width: 1440px;
+  padding: var(--section-gap) var(--section-inline) 0;
+}
+
+.header h2 {
+  font-size: clamp(4rem, 10vw, 9rem);
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.imageFrame {
+  aspect-ratio: 16 / 9;
+  margin: clamp(2.5rem, 5vw, 4.5rem) 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 48%;
+}
+
+.story,
+.newProject {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr);
+}
+
+.story {
+  border-block-end: 1px solid var(--line);
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+}
+
+.story h3,
+.newProject h3 {
+  font-size: clamp(2.2rem, 4.4vw, 4.5rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  margin: 0;
+  max-width: 13ch;
+}
+
+.copy {
+  max-width: 48rem;
+}
+
+.copy p {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.58;
+  margin: 0;
+}
+
+.copy p + p {
+  margin-top: 1.5rem;
+}
+
+.copy cite,
+.copy em {
+  font-style: italic;
+}
+
+.newProject {
+  background: var(--mint);
+  color: var(--brown);
+  padding: clamp(2.5rem, 6vw, 5.5rem);
+}
+
+.newProject h3 span {
+  color: var(--red);
+}
+
+:global([dir="rtl"]) .section,
+:global([dir="rtl"]) .copy p {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 900px) {
+  .story,
+  .newProject {
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .story h3,
+  .newProject h3 {
+    max-width: 18ch;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding-inline: 1.25rem;
+  }
+
+  .header h2 {
+    font-size: clamp(3.5rem, 19vw, 5rem);
+  }
+
+  .imageFrame {
+    aspect-ratio: 4 / 3;
+    margin-top: 2rem;
+  }
+
+  .image {
+    object-position: 62% center;
+  }
+
+  .story {
+    padding-block: 3rem;
+  }
+
+  .story h3,
+  .newProject h3 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    max-width: none;
+  }
+
+  .newProject {
+    padding: 2rem 1.25rem;
+  }
+}

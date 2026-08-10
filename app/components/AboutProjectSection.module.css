@@ -1,40 +1,61 @@
 .section {
   background: var(--page-bg);
   color: var(--page-text);
-  margin: 0 auto var(--section-gap);
-  max-width: 1440px;
+  margin: 0 0 var(--section-gap);
   overflow: hidden;
-  padding: clamp(3rem, 6vw, 6rem) 5vw;
-  padding-block-start: 0;
 }
 
 .header {
-  align-items: start;
-  border-block-end: 2px solid var(--page-text);
-  display: grid;
-  gap: clamp(2.5rem, 5vw, 5rem);
-  grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.2fr);
-  padding-block-end: clamp(2rem, 5vw, 4rem);
-}
-
-.headerImageFrame {
-  aspect-ratio: 4 / 5;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: clamp(34rem, 75svh, 52rem);
   overflow: hidden;
   position: relative;
 }
 
+.headerImageFrame {
+  inset: 0;
+  position: absolute;
+}
+
 .headerImage {
   object-fit: cover;
-  object-position: 60% center;
+  object-position: center 48%;
+}
+
+.header::after {
+  background: linear-gradient(
+    180deg,
+    rgba(13, 15, 14, 0.24) 0%,
+    rgba(13, 15, 14, 0.58) 52%,
+    rgba(13, 15, 14, 0.42) 100%
+  );
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: 1;
 }
 
 .header h2 {
+  color: var(--cream);
   font-size: clamp(3.5rem, 7.5vw, 7.5rem);
   letter-spacing: -0.075em;
   line-height: 0.88;
   margin: 0;
-  max-width: 9ch;
+  max-width: 12ch;
+  padding: var(--section-inline);
+  position: relative;
+  text-align: center;
+  text-shadow: 0 0.25rem 2.5rem rgba(0, 0, 0, 0.62);
   text-transform: uppercase;
+  z-index: 2;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding-inline: var(--section-inline);
 }
 
 .chapter {
@@ -56,7 +77,6 @@
   line-height: 1;
   margin: 0;
   max-width: 18ch;
-  overflow-wrap: anywhere;
 }
 
 .chapterHeading p {
@@ -73,7 +93,6 @@
   line-height: 1.55;
   margin: 0;
   max-width: 48rem;
-  overflow-wrap: anywhere;
 }
 
 .chapterBody > p + p {
@@ -114,7 +133,6 @@
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.55;
   margin: 0;
-  overflow-wrap: anywhere;
 }
 
 .resourcesChapter {
@@ -134,7 +152,6 @@
 
 .optionalNote {
   background: var(--cream);
-  border-inline-start: 0.35rem solid var(--red);
   color: var(--brown);
   font-size: clamp(1rem, 1.5vw, 1.2rem) !important;
   padding: clamp(1.25rem, 2.5vw, 2rem);
@@ -154,14 +171,6 @@
 }
 
 @media (max-width: 900px) {
-  .header {
-    grid-template-columns: 1fr;
-  }
-
-  .headerImageFrame {
-    aspect-ratio: 16 / 10;
-  }
-
   .chapter {
     gap: 2rem;
     grid-template-columns: 1fr;
@@ -173,23 +182,22 @@
 }
 
 @media (max-width: 600px) {
-  .section {
-    padding: 2rem 1.25rem;
-    padding-block-start: 0;
-  }
-
   .header {
-    gap: 1.75rem;
-    padding-block-end: 2rem;
-  }
-
-  .headerImageFrame {
-    aspect-ratio: 4 / 3;
+    min-height: 62svh;
   }
 
   .header h2 {
     font-size: clamp(2.75rem, 14vw, 4.25rem);
     max-width: 10ch;
+    padding-inline: 1.25rem;
+  }
+
+  .headerImage {
+    object-position: 58% center;
+  }
+
+  .content {
+    padding-inline: 1.25rem;
   }
 
   .chapter {

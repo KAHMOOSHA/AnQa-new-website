@@ -78,12 +78,13 @@ export function AboutProjectSection() {
             src="/images/anqa-backstage-16.jpeg"
             alt="AnQa performers preparing backstage"
             fill
-            sizes="(max-width: 900px) 90vw, 42vw"
+            sizes="100vw"
           />
         </div>
         <h2 id="about-project-heading">About the project</h2>
       </motion.header>
 
+      <div className={styles.content}>
       <motion.article className={styles.chapter} {...revealProps}>
         <div className={styles.chapterHeading}>
           <h3>Operational Guidelines</h3>
@@ -151,6 +152,7 @@ export function AboutProjectSection() {
           </p>
         </div>
       </motion.article>
+      </div>
     </section>
   );
 }
