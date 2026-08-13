@@ -1,0 +1,163 @@
+.footer {
+  background: var(--brown);
+  color: var(--cream);
+  isolation: isolate;
+  min-height: 22rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.content {
+  margin-inline: auto;
+  max-width: 100rem;
+  padding: clamp(2.5rem, 4vw, 3.5rem) var(--section-inline) 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.socialLink {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.instagramIcon {
+  filter: brightness(0) invert(93%) sepia(20%) saturate(501%) hue-rotate(345deg)
+    brightness(107%) contrast(97%);
+  height: 1.9rem;
+  transition:
+    filter 180ms ease,
+    transform 180ms ease;
+  width: 1.9rem;
+}
+
+.information {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: 1.2fr 0.8fr 1.25fr 0.65fr;
+  padding-bottom: clamp(2rem, 3.5vw, 3rem);
+}
+
+.information h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.identity {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.logoLink,
+.logoFrame {
+  display: block;
+  height: 4.35rem;
+  width: 3rem;
+}
+
+.logoFrame {
+  overflow: hidden;
+  position: relative;
+}
+
+.logoImage {
+  filter: brightness(0) invert(93%) sepia(20%) saturate(501%) hue-rotate(345deg)
+    brightness(107%) contrast(97%);
+  height: 8.93rem;
+  max-width: none;
+  position: absolute;
+  transform: translate(-5.29rem, -1.9rem);
+  transition: filter 180ms ease;
+  width: 12.67rem;
+}
+
+.logoLink:hover .logoImage,
+.logoLink:focus-visible .logoImage {
+  filter: brightness(0) invert(72%) sepia(22%) saturate(691%) hue-rotate(103deg)
+    brightness(88%) contrast(86%);
+}
+
+.linkList,
+.contact {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.linkList a,
+.contact a,
+.socialLink {
+  color: inherit;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.linkList a:hover,
+.linkList a:focus-visible,
+.contact a:hover,
+.contact a:focus-visible,
+.socialLink:hover,
+.socialLink:focus-visible {
+  color: var(--mint);
+  text-decoration-color: currentColor;
+}
+
+.socialLink:hover .instagramIcon,
+.socialLink:focus-visible .instagramIcon {
+  filter: brightness(0) invert(72%) sepia(22%) saturate(691%) hue-rotate(103deg)
+    brightness(88%) contrast(86%);
+  transform: scale(1.08);
+}
+
+.socialLink {
+  justify-content: flex-start;
+  width: fit-content;
+}
+
+.bottomLine {
+  align-items: center;
+  display: flex;
+  font-size: 0.68rem;
+  justify-content: flex-start;
+  letter-spacing: 0.08em;
+  padding-top: 1rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .information {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    min-height: 36rem;
+  }
+
+  .content {
+    padding-top: 2.5rem;
+  }
+
+  .information {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .bottomLine {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+}

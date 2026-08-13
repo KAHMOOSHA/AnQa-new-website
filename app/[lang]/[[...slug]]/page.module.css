@@ -77,16 +77,20 @@
 }
 
 .mainNav a {
-  border-bottom: 1px solid transparent;
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   padding-block: 0.35rem;
+  transition: color 160ms ease;
   text-transform: uppercase;
 }
 
-.mainNav a:hover,
+.mainNav a:hover {
+  color: var(--mint);
+}
+
 .mainNav a[aria-current="page"] {
-  border-color: var(--mint);
+  color: var(--mint);
+  font-weight: 700;
 }
 
 .hero,
@@ -196,17 +200,6 @@
   margin-top: 3rem;
   max-width: 42rem;
   padding-top: 2rem;
-}
-
-.siteFooter {
-  border-top: 1px solid var(--line);
-  display: flex;
-  font-size: 0.72rem;
-  justify-content: space-between;
-  letter-spacing: 0.08em;
-  margin: 0 var(--section-inline);
-  padding: 1.6rem 0 2.5rem;
-  text-transform: uppercase;
 }
 
 :global([dir="rtl"]) .hero h1,

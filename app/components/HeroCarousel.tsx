@@ -199,7 +199,11 @@ export function HeroCarousel({ language }: { language: Language }) {
 
       <div className={styles.controls}>
         <button type="button" onClick={scrollPrevious} aria-label={t.previous}>
-          <ChevronLeft aria-hidden="true" />
+          {direction === "rtl" ? (
+            <ChevronRight aria-hidden="true" />
+          ) : (
+            <ChevronLeft aria-hidden="true" />
+          )}
         </button>
         <div className={styles.dots} role="group" aria-label={t.slidesLabel}>
           {slides.map((slide, index) => (
@@ -213,7 +217,11 @@ export function HeroCarousel({ language }: { language: Language }) {
           ))}
         </div>
         <button type="button" onClick={scrollNext} aria-label={t.next}>
-          <ChevronRight aria-hidden="true" />
+          {direction === "rtl" ? (
+            <ChevronLeft aria-hidden="true" />
+          ) : (
+            <ChevronRight aria-hidden="true" />
+          )}
         </button>
       </div>
     </section>

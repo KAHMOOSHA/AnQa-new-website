@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import {
-  fadeRise,
-  revealTransition,
-  revealViewport,
-} from "../lib/motion";
+import { fadeRise, revealTransition, revealViewport } from "../lib/motion";
 import styles from "./AboutProjectSection.module.css";
 
 const operationalGuidelines = [
@@ -17,8 +13,7 @@ const operationalGuidelines = [
   },
   {
     title: "Cast",
-    description:
-      "Involvement of professionals or non-professional performers.",
+    description: "Involvement of professionals or non-professional performers.",
   },
   {
     title: "Stage Design",
@@ -67,10 +62,7 @@ const revealProps = {
 
 export function AboutProjectSection() {
   return (
-    <section
-      className={styles.section}
-      aria-labelledby="about-project-heading"
-    >
+    <section className={styles.section} aria-labelledby="about-project-heading">
       <motion.header className={styles.header} {...revealProps}>
         <div className={styles.headerImageFrame}>
           <Image
@@ -85,73 +77,72 @@ export function AboutProjectSection() {
       </motion.header>
 
       <div className={styles.content}>
-      <motion.article className={styles.chapter} {...revealProps}>
-        <div className={styles.chapterHeading}>
-          <h3>Operational Guidelines</h3>
-        </div>
-        <div className={styles.chapterBody}>
-          <p>
-            Each participating organization operates with full organizational
-            and artistic autonomy, with the freedom to define:
-          </p>
-          <DetailList items={operationalGuidelines} />
-        </div>
-      </motion.article>
+        <motion.article className={styles.chapter} {...revealProps}>
+          <div className={styles.chapterHeading}>
+            <h3>Operational Guidelines</h3>
+          </div>
+          <div className={styles.chapterBody}>
+            <p>
+              Each participating organization operates with full organizational
+              and artistic autonomy, with the freedom to define:
+            </p>
+            <DetailList items={operationalGuidelines} />
+          </div>
+        </motion.article>
 
-      <motion.article
-        className={`${styles.chapter} ${styles.resourcesChapter}`}
-        {...revealProps}
-      >
-        <div className={styles.chapterHeading}>
-          <h3>Provided Resources</h3>
-          <p>Digital Kit</p>
-        </div>
-        <div className={styles.chapterBody}>
-          <p>
-            Progetto REC will provide participating entities with the necessary
-            materials to stage the reading:
-          </p>
-          <DetailList items={providedResources} />
-        </div>
-      </motion.article>
+        <motion.article
+          className={`${styles.chapter} ${styles.resourcesChapter}`}
+          {...revealProps}
+        >
+          <div className={styles.chapterHeading}>
+            <h3>Provided Resources</h3>
+          </div>
+          <div className={styles.chapterBody}>
+            <p>
+              Progetto REC will provide participating entities with the
+              necessary materials to stage the reading:
+            </p>
+            <DetailList items={providedResources} />
+          </div>
+        </motion.article>
 
-      <motion.article className={styles.chapter} {...revealProps}>
-        <div className={styles.chapterHeading}>
-          <h3>Communication and Documentary Project</h3>
-        </div>
-        <div className={styles.chapterBody}>
-          <p>
-            All events will receive visibility through our official channels
-            based on the information provided by the participating entities.
-            Furthermore, organizations that choose to document their evening
-            with video can send us the filmed footage: the recordings will
-            merge into a documentary project dedicated to the choral narration
-            of this initiative.
-          </p>
-        </div>
-      </motion.article>
+        <motion.article className={styles.chapter} {...revealProps}>
+          <div className={styles.chapterHeading}>
+            <h3>Communication and Documentary Project</h3>
+          </div>
+          <div className={styles.chapterBody}>
+            <p>
+              All events will receive visibility through our official channels
+              based on the information provided by the participating entities.
+              Furthermore, organizations that choose to document their evening
+              with video can send us the filmed footage: the recordings will
+              merge into a documentary project dedicated to the choral narration
+              of this initiative.
+            </p>
+          </div>
+        </motion.article>
 
-      <motion.article className={styles.chapter} {...revealProps}>
-        <div className={styles.chapterHeading}>
-          <h3>Solidarity Initiatives</h3>
-        </div>
-        <div className={styles.chapterBody}>
-          <p>
-            Participating entities, where possible, can donate a portion of the
-            proceeds or collected donations to Progetto REC.Palestina.
-          </p>
-          <p>
-            These funds will be used partly to support the activities of the
-            AnQa theatre company—providing a contribution to the Gazan authors
-            of the texts and investing in future projects—and partly for the
-            humanitarian interventions of Emergenza Gaza.
-          </p>
-          <p className={styles.optionalNote}>
-            <strong>Please note:</strong> The contribution to Progetto REC
-            remains optional and at the discretion of individual organizers.
-          </p>
-        </div>
-      </motion.article>
+        <motion.article className={styles.chapter} {...revealProps}>
+          <div className={styles.chapterHeading}>
+            <h3>Solidarity Initiatives</h3>
+          </div>
+          <div className={styles.chapterBody}>
+            <p>
+              Participating entities, where possible, can donate a portion of
+              the proceeds or collected donations to Progetto REC.Palestina.
+            </p>
+            <p>
+              These funds will be used partly to support the activities of the
+              AnQa theatre company—providing a contribution to the Gazan authors
+              of the texts and investing in future projects—and partly for the
+              humanitarian interventions of Emergenza Gaza.
+            </p>
+            <p className={styles.optionalNote}>
+              <strong>Please note:</strong> The contribution to Progetto REC
+              remains optional and at the discretion of individual organizers.
+            </p>
+          </div>
+        </motion.article>
       </div>
     </section>
   );

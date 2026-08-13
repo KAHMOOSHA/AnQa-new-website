@@ -103,6 +103,10 @@
   flex: 0 0 auto;
 }
 
+:global([dir="rtl"]) .link svg {
+  transform: scaleX(-1);
+}
+
 .link:hover,
 .link:focus-visible {
   background: var(--red);

@@ -33,11 +33,6 @@
   --header-solid: var(--black);
   --brand-filter: brightness(0) invert(93%) sepia(20%) saturate(501%)
     hue-rotate(345deg) brightness(107%) contrast(97%);
-  --ink: var(--page-text);
-  --paper: var(--page-bg);
-  --paper-light: var(--cream);
-  --accent: var(--red);
-  --gold: var(--mint);
   --line: rgba(251, 236, 203, 0.2);
 }
 
@@ -61,8 +56,8 @@ html {
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--page-bg);
+  color: var(--page-text);
   font-family: var(--font-poppins), Arial, sans-serif;
   margin: 0;
   transition: background-color 220ms ease, color 220ms ease;

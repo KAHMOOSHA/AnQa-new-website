@@ -1,0 +1,210 @@
+.section {
+  margin: 0 0 var(--section-gap);
+}
+
+.stage {
+  background: #050606;
+  color: var(--cream);
+  min-height: 100svh;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.viewport {
+  cursor: pointer;
+  height: 100svh;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 11%,
+    #000 89%,
+    transparent 100%
+  );
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--cream) transparent;
+  scrollbar-width: thin;
+}
+
+.viewport:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: -3px;
+}
+
+.roll {
+  margin-inline: auto;
+  max-width: 76rem;
+  padding: 33svh clamp(1.5rem, 6vw, 7rem) 42svh;
+}
+
+.titleCard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  min-height: 44svh;
+  text-align: center;
+}
+
+.titleCard span {
+  color: var(--cream);
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.titleCard strong {
+  color: var(--cream);
+  font-size: clamp(2.8rem, 7vw, 6.8rem);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  max-width: 10ch;
+  text-transform: uppercase;
+}
+
+.creditChapter {
+  margin-top: clamp(7rem, 15vw, 14rem);
+}
+
+.creditChapter > h3 {
+  color: var(--cream);
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  margin: 0 0 clamp(5rem, 10vw, 9rem);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.creditGroup {
+  margin-bottom: clamp(5rem, 9vw, 8rem);
+}
+
+.creditGroup h4 {
+  color: var(--cream);
+  font-size: clamp(1.15rem, 2.1vw, 1.7rem);
+  letter-spacing: 0.13em;
+  margin: 0 0 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.creditRow {
+  color: var(--cream);
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-block: 1.15rem;
+}
+
+.creditRow strong,
+.creditRow span {
+  color: inherit;
+  font-size: clamp(0.92rem, 1.45vw, 1.2rem);
+  line-height: 1.35;
+}
+
+.creditRow strong {
+  font-weight: 700;
+  text-align: end;
+  text-transform: uppercase;
+}
+
+.creditRow .pending {
+  color: inherit;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.endMark {
+  color: var(--cream);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  margin-top: 12rem;
+  text-align: center;
+}
+
+.playbackFeedback {
+  align-items: center;
+  animation: playback-feedback 1.3s ease both;
+  color: var(--cream);
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  left: clamp(1rem, 3vw, 2.25rem);
+  pointer-events: none;
+  position: absolute;
+  top: clamp(1rem, 3vw, 2.25rem);
+  width: 4rem;
+  z-index: 2;
+}
+
+.playbackFeedback svg {
+  height: 2.35rem;
+  stroke-width: 2.25;
+  width: 2.35rem;
+}
+
+@keyframes playback-feedback {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  16%,
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
+:global([dir="rtl"]) .titleCard strong,
+:global([dir="rtl"]) .creditChapter > h3,
+:global([dir="rtl"]) .creditGroup h4,
+:global([dir="rtl"]) .creditRow {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 700px) {
+  .roll {
+    padding-inline: 1.2rem;
+  }
+
+  .creditRow {
+    gap: 0.3rem;
+    grid-template-columns: 1fr;
+    margin-block: 1.75rem;
+    text-align: center;
+  }
+
+  .creditRow strong,
+  .creditRow span {
+    text-align: center;
+  }
+
+  .creditRow span {
+    font-size: 0.82rem;
+  }
+
+  .creditGroup h4 {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playbackFeedback {
+    animation: none;
+    opacity: 1;
+  }
+}

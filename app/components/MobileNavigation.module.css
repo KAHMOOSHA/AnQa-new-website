@@ -132,6 +132,10 @@
   width: 1.25rem;
 }
 
+:global([dir="rtl"]) .instagram svg {
+  transform: scaleX(-1);
+}
+
 @media (max-width: 900px) {
   .root {
     display: block;

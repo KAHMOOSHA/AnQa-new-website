@@ -1,0 +1,142 @@
+.section {
+  color: var(--page-text);
+  margin: 0 auto var(--section-gap);
+  max-width: 1440px;
+  padding-inline: var(--section-inline);
+}
+
+.header {
+  padding-block-end: clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+}
+
+.header h2 {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.programme {
+  display: grid;
+  gap: clamp(3rem, 7vw, 7rem) clamp(3rem, 9vw, 9rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  padding-block-start: clamp(3rem, 6vw, 6rem);
+}
+
+.programme h3 {
+  color: var(--mint);
+  font-size: clamp(0.78rem, 1.2vw, 0.95rem);
+  letter-spacing: 0.14em;
+  margin: 0 0 clamp(2rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+}
+
+.authorList,
+.tutorList,
+.production ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.authorList {
+  display: grid;
+  gap: clamp(2.4rem, 5vw, 4.25rem);
+}
+
+.authorList li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.authorList strong {
+  font-size: clamp(1.75rem, 3.4vw, 3.25rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.authorList li > span {
+  color: var(--page-text-soft);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  line-height: 1.4;
+}
+
+.authorList cite {
+  font-style: italic;
+}
+
+.separator {
+  color: var(--red);
+  font-family: var(--font-poppins), Arial, sans-serif;
+  font-style: normal;
+}
+
+.tutorList {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tutorList li {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+}
+
+.tutorList strong {
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.25;
+}
+
+.role {
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.production {
+  grid-column: 1 / -1;
+  padding-block-start: clamp(2.5rem, 5vw, 4rem);
+}
+
+.production ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem clamp(1.5rem, 4vw, 4rem);
+}
+
+.production li {
+  font-size: clamp(1.35rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+:global([dir="rtl"]) .section,
+:global([dir="rtl"]) .authorList li > span {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+@media (max-width: 760px) {
+  .section {
+    padding-inline: 1.25rem;
+  }
+
+  .programme {
+    grid-template-columns: 1fr;
+  }
+
+  .production {
+    grid-column: auto;
+  }
+
+  .production ul {
+    flex-direction: column;
+  }
+}

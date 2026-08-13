@@ -10,18 +10,20 @@ import { HowToJoinSection } from "../../components/HowToJoinSection";
 import { LanguageMenu } from "../../components/LanguageMenu";
 import { MobileNavigation } from "../../components/MobileNavigation";
 import { ParticipationCta } from "../../components/ParticipationCta";
+import { ParticipatingVenuesCredits } from "../../components/ParticipatingVenuesCredits";
+import { SiteFooter } from "../../components/SiteFooter";
+import { TeamCreditsSection } from "../../components/TeamCreditsSection";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { WhoThisProjectIsFor } from "../../components/WhoThisProjectIsFor";
 import styles from "./page.module.css";
 
 const languages = ["en", "ar", "it", "fr"] as const;
 type Language = (typeof languages)[number];
-type Page = "home" | "about" | "history" | "partnerships" | "support";
+type Page = "home" | "about" | "partnerships" | "support";
 
 const pageSlugs: Record<Page, string> = {
   home: "",
   about: "about",
-  history: "history",
   partnerships: "partnerships",
   support: "support",
 };
@@ -38,14 +40,12 @@ const copy: Record<
     eventName: string;
     eventStatus: string;
     pageIntro: Record<Exclude<Page, "home">, string>;
-    footer: string;
   }
 > = {
   en: {
     nav: {
       home: "Home",
       about: "About",
-      history: "History",
       partnerships: "Partnerships",
       support: "Support",
     },
@@ -59,20 +59,16 @@ const copy: Record<
     eventStatus: "Details coming soon",
     pageIntro: {
       about: "Meet the people, purpose, and artistic vision behind AnQa.",
-      history:
-        "Follow the journey, productions, and moments that shaped our company.",
       partnerships:
         "Discover how cultural organizations and creative partners can work with AnQa.",
       support:
         "Help independent, multilingual theatre reach more people and places.",
     },
-    footer: "Independent multilingual theatre",
   },
   ar: {
     nav: {
       home: "الرئيسية",
       about: "عن عنقاء",
-      history: "تاريخنا",
       partnerships: "الشراكات",
       support: "ادعمنا",
     },
@@ -85,19 +81,16 @@ const copy: Record<
     eventStatus: "التفاصيل قريباً",
     pageIntro: {
       about: "تعرّفوا إلى الأشخاص والرسالة والرؤية الفنية وراء عنقاء.",
-      history: "تابعوا الرحلة والعروض واللحظات التي شكّلت فرقتنا.",
       partnerships:
         "اكتشفوا سبل التعاون بين عنقاء والمؤسسات الثقافية والشركاء المبدعين.",
       support:
         "ساعدوا المسرح المستقل متعدد اللغات على الوصول إلى جمهور وأماكن أكثر.",
     },
-    footer: "مسرح مستقل متعدد اللغات",
   },
   it: {
     nav: {
       home: "Home",
       about: "Chi siamo",
-      history: "Storia",
       partnerships: "Partnership",
       support: "Sostienici",
     },
@@ -111,20 +104,16 @@ const copy: Record<
     eventStatus: "Dettagli in arrivo",
     pageIntro: {
       about: "Conosci le persone, la missione e la visione artistica di AnQa.",
-      history:
-        "Ripercorri il viaggio, le produzioni e i momenti che hanno formato la compagnia.",
       partnerships:
         "Scopri come le organizzazioni culturali e i partner creativi possono collaborare con AnQa.",
       support:
         "Aiuta il teatro indipendente e multilingue a raggiungere più persone e luoghi.",
     },
-    footer: "Teatro indipendente multilingue",
   },
   fr: {
     nav: {
       home: "Accueil",
       about: "À propos",
-      history: "Histoire",
       partnerships: "Partenariats",
       support: "Soutenir",
     },
@@ -139,14 +128,11 @@ const copy: Record<
     pageIntro: {
       about:
         "Découvrez les personnes, la mission et la vision artistique qui animent AnQa.",
-      history:
-        "Parcourez le chemin, les créations et les moments qui ont façonné la compagnie.",
       partnerships:
         "Découvrez comment les organisations culturelles et partenaires créatifs peuvent collaborer avec AnQa.",
       support:
         "Aidez le théâtre indépendant et multilingue à toucher davantage de publics et de territoires.",
     },
-    footer: "Théâtre indépendant multilingue",
   },
 };
 
@@ -260,7 +246,9 @@ export default async function LocalizedPage({
           </>
         ) : (
           <>
-            {page !== "support" && page !== "about" && (
+            {page !== "support" &&
+              page !== "about" &&
+              page !== "partnerships" && (
               <section className={styles.pageHero}>
                 <p className="eyebrow">AnQa Theatre</p>
                 <h1>{t.nav[page]}</h1>
@@ -270,6 +258,7 @@ export default async function LocalizedPage({
             {page === "about" && (
               <>
                 <AboutUsSection />
+                <TeamCreditsSection />
                 <AboutProjectSection />
               </>
             )}
@@ -279,14 +268,25 @@ export default async function LocalizedPage({
                 <WhoThisProjectIsFor />
               </>
             )}
+            {page === "partnerships" && (
+              <ParticipatingVenuesCredits language={lang} />
+            )}
           </>
         )}
       </main>
 
-      <footer className={styles.siteFooter}>
-        <span>© {new Date().getFullYear()} AnQa</span>
-        <span>{t.footer}</span>
-      </footer>
+      {page !== "partnerships" && (
+        <SiteFooter
+          language={lang}
+          links={(["about", "partnerships", "support"] as Page[]).map(
+            (item) => ({
+              href: `/${lang}/${pageSlugs[item]}`,
+              label: t.nav[item],
+            }),
+          )}
+          year={new Date().getFullYear()}
+        />
+      )}
     </div>
   );
 }
