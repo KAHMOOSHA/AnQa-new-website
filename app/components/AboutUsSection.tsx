@@ -17,17 +17,28 @@ const revealProps = {
   whileInView: "visible",
 } as const;
 
+const openingRevealProps = {
+  animate: "visible",
+  initial: "hidden",
+  transition: revealTransition,
+  variants: fadeRise,
+} as const;
+
 export function AboutUsSection() {
   return (
     <section className={styles.section} aria-labelledby="about-us-heading">
-      <motion.header className={styles.header} {...revealProps}>
+      <motion.header className={styles.header} {...openingRevealProps}>
         <h2 id="about-us-heading">About us</h2>
       </motion.header>
 
-      <motion.figure className={styles.imageFrame} {...revealProps}>
+      <motion.figure
+        className={styles.imageFrame}
+        {...openingRevealProps}
+        transition={{ ...revealTransition, delay: 0.08 }}
+      >
         <Image
           className={styles.image}
-          src="/images/all-thats-left-queen-01.jpg"
+          src="/images/All thats left to me - Queen 01.jpg"
           alt="AnQa performers on stage during All That’s Left to Me"
           fill
           loading="eager"

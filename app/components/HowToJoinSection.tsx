@@ -48,6 +48,13 @@ const revealProps = {
   whileInView: "visible",
 } as const;
 
+const openingRevealProps = {
+  animate: "visible",
+  initial: "hidden",
+  transition: softRevealTransition,
+  variants: softFadeRise,
+} as const;
+
 export function HowToJoinSection({ language }: { language: Language }) {
   return (
     <section
@@ -55,7 +62,7 @@ export function HowToJoinSection({ language }: { language: Language }) {
       id="how-to-join"
       aria-labelledby="how-to-join-heading"
     >
-      <motion.div className={styles.header} {...revealProps}>
+      <motion.div className={styles.header} {...openingRevealProps}>
         <div>
           <p className={styles.premiereStatement}>
             <span>Global</span>
@@ -70,7 +77,11 @@ export function HowToJoinSection({ language }: { language: Language }) {
         </time>
       </motion.div>
 
-      <motion.p className={styles.introduction} {...revealProps}>
+      <motion.p
+        className={styles.introduction}
+        {...openingRevealProps}
+        transition={{ ...softRevealTransition, delay: 0.08 }}
+      >
         Participating in the distributed staging project on October 15, 2026, is
         simple. The initiative aims to unite diverse voices into a single, great
         collective narrative.
