@@ -37,6 +37,7 @@
   margin-inline: auto;
   max-width: 76rem;
   padding: 33svh clamp(1.5rem, 6vw, 7rem) 42svh;
+  width: 100%;
 }
 
 .titleCard {
@@ -63,6 +64,7 @@
   letter-spacing: -0.06em;
   line-height: 0.9;
   max-width: 10ch;
+  text-wrap: balance;
   text-transform: uppercase;
 }
 
@@ -179,6 +181,17 @@
 @media (max-width: 700px) {
   .roll {
     padding-inline: 1.2rem;
+  }
+
+  .titleCard {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .titleCard strong {
+    font-size: clamp(2.15rem, 10vw, 3rem);
+    max-width: 100%;
+    width: 100%;
   }
 
   .creditRow {

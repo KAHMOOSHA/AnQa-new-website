@@ -223,20 +223,24 @@
 
 @media (max-width: 600px) {
   .siteHeader {
-    gap: 1rem;
-    padding-block: 1rem;
+    gap: 0.6rem;
+    padding-block: 0.65rem;
+  }
+
+  .headerActions {
+    gap: 0.4rem;
   }
 
   .brand,
   .brandLogoFrame {
-    height: 3.2rem;
-    width: 1.84rem;
+    height: 2.75rem;
+    width: 1.58rem;
   }
 
   .brandLogoImage {
-    height: 6.42rem;
-    transform: translate(-3.81rem, -1.37rem);
-    width: 9.11rem;
+    height: 5.52rem;
+    transform: translate(-3.27rem, -1.18rem);
+    width: 7.83rem;
   }
 
   .hero h1 {
