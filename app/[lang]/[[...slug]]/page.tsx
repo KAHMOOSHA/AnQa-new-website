@@ -19,7 +19,7 @@ import { WhoThisProjectIsFor } from "../../components/WhoThisProjectIsFor";
 import { WhyOctober15Section } from "../../components/WhyOctober15Section";
 import styles from "./page.module.css";
 
-const languages = ["en", "ar", "it", "fr"] as const;
+const languages = ["en", "ar", "it", "fr", "tr"] as const;
 type Language = (typeof languages)[number];
 type Page = "home" | "about" | "partnerships" | "join";
 
@@ -28,6 +28,14 @@ const pageSlugs: Record<Page, string> = {
   about: "about",
   partnerships: "partnerships",
   join: "join",
+};
+
+const mainNavigationLabels: Record<Language, string> = {
+  en: "Main navigation",
+  ar: "التنقل الرئيسي",
+  it: "Navigazione principale",
+  fr: "Navigation principale",
+  tr: "Ana gezinme",
 };
 
 const copy: Record<
@@ -136,6 +144,30 @@ const copy: Record<
         "Aidez le théâtre indépendant et multilingue à toucher davantage de publics et de territoires.",
     },
   },
+  tr: {
+    nav: {
+      home: "Ana Sayfa",
+      about: "Hakkımızda",
+      partnerships: "Ortaklıklar",
+      join: "Katıl",
+    },
+    eyebrow: "Kültürler arasında tiyatro",
+    hero: "Hikâyeler kanatlanıyor.",
+    intro:
+      "AnQa, cesur ve çok dilli tiyatro aracılığıyla sanatçıları ve izleyicileri bir araya getirir.",
+    action: "Bir sonraki etkinliğimizi keşfedin",
+    eventLabel: "Yaklaşan etkinlik",
+    eventName: "Yeni bir gösteri şekilleniyor",
+    eventStatus: "Ayrıntılar yakında",
+    pageIntro: {
+      about:
+        "AnQa’nın ardındaki insanları, amacı ve sanatsal vizyonu tanıyın.",
+      partnerships:
+        "Kültür kuruluşlarının ve yaratıcı ortakların AnQa ile nasıl çalışabileceğini keşfedin.",
+      join:
+        "Bağımsız, çok dilli tiyatronun daha fazla insana ve yere ulaşmasına yardımcı olun.",
+    },
+  },
 };
 
 function resolvePage(slug?: string[]): Page | null {
@@ -198,7 +230,10 @@ export default async function LocalizedPage({
             />
           </span>
         </Link>
-        <nav className={styles.mainNav} aria-label="Main navigation">
+        <nav
+          className={styles.mainNav}
+          aria-label={mainNavigationLabels[lang]}
+        >
           {(Object.keys(pageSlugs) as Page[]).map((item) => (
             <Link
               key={item}
@@ -210,9 +245,10 @@ export default async function LocalizedPage({
           ))}
         </nav>
         <div className={styles.headerActions}>
-          <ThemeToggle />
+          <ThemeToggle language={lang} />
           <LanguageMenu currentLanguage={lang} pagePath={pageSlugs[page]} />
           <MobileNavigation
+            language={lang}
             links={(Object.keys(pageSlugs) as Page[]).map((item) => ({
               current: item === page,
               href: `/${lang}${pageSlugs[item] ? `/${pageSlugs[item]}` : ""}`,
@@ -248,8 +284,8 @@ export default async function LocalizedPage({
               <span className={styles.eventStatus}>{t.eventStatus}</span>
             </section>
             */}
-            <ProjectIntroductionSection />
-            <WhyOctober15Section />
+            <ProjectIntroductionSection language={lang} />
+            <WhyOctober15Section language={lang} />
             <ParticipationCta language={lang} />
           </>
         ) : (
@@ -265,15 +301,15 @@ export default async function LocalizedPage({
             )}
             {page === "about" && (
               <>
-                <AboutUsSection />
-                <TeamCreditsSection />
+                <AboutUsSection language={lang} />
+                <TeamCreditsSection language={lang} />
               </>
             )}
             {page === "join" && (
               <>
                 <HowToJoinSection language={lang} />
-                <WhoThisProjectIsFor />
-                <AboutProjectSection />
+                <WhoThisProjectIsFor language={lang} />
+                <AboutProjectSection language={lang} />
               </>
             )}
             {page === "partnerships" && (

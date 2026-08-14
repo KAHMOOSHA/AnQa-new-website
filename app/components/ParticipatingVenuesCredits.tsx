@@ -9,7 +9,7 @@ import {
 } from "../data/participatingVenues";
 import styles from "./ParticipatingVenuesCredits.module.css";
 
-type Language = "en" | "ar" | "it" | "fr";
+type Language = "en" | "ar" | "it" | "fr" | "tr";
 
 const translations = {
   en: {
@@ -56,6 +56,18 @@ const translations = {
     playing: "Générique en lecture",
     scrollLabel: "Générique des lieux participants. Faites défiler pour tous les découvrir.",
   },
+  tr: {
+    title: "Katılımcı mekânlar",
+    date: "15 Ekim 2026",
+    international: "Uluslararası",
+    italy: "İtalya",
+    venuePending: "Mekân daha sonra duyurulacak",
+    locationPending: "Konum daha sonra duyurulacak",
+    paused: "Jenerik duraklatıldı",
+    playing: "Jenerik oynatılıyor",
+    scrollLabel:
+      "Katılımcı mekânlar jeneriği. Tüm mekânları keşfetmek için kaydırın.",
+  },
 } as const;
 
 const countryNames: Record<Language, Record<string, string>> = {
@@ -98,6 +110,16 @@ const countryNames: Record<Language, Record<string, string>> = {
     Cile: "Chili",
     Messico: "Mexique",
     Svizzera: "Suisse",
+  },
+  tr: {
+    Francia: "Fransa",
+    Cipro: "Kıbrıs",
+    Irlanda: "İrlanda",
+    Grecia: "Yunanistan",
+    Spagna: "İspanya",
+    Cile: "Şili",
+    Messico: "Meksika",
+    Svizzera: "İsviçre",
   },
 };
 

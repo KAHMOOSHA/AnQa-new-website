@@ -11,12 +11,49 @@ type NavigationLink = {
   label: string;
 };
 
+type Language = "en" | "ar" | "it" | "fr" | "tr";
+
 type MobileNavigationProps = {
+  language: Language;
   links: NavigationLink[];
 };
 
-export function MobileNavigation({ links }: MobileNavigationProps) {
+const labels = {
+  en: {
+    open: "Open navigation menu",
+    close: "Close navigation menu",
+    navigation: "Mobile navigation",
+    instagram: "Follow AnQa on Instagram",
+  },
+  ar: {
+    open: "افتح قائمة التنقل",
+    close: "أغلق قائمة التنقل",
+    navigation: "التنقل على الهاتف",
+    instagram: "تابع عنقاء على إنستغرام",
+  },
+  it: {
+    open: "Apri il menu di navigazione",
+    close: "Chiudi il menu di navigazione",
+    navigation: "Navigazione mobile",
+    instagram: "Segui AnQa su Instagram",
+  },
+  fr: {
+    open: "Ouvrir le menu de navigation",
+    close: "Fermer le menu de navigation",
+    navigation: "Navigation mobile",
+    instagram: "Suivez AnQa sur Instagram",
+  },
+  tr: {
+    open: "Gezinme menüsünü aç",
+    close: "Gezinme menüsünü kapat",
+    navigation: "Mobil gezinme",
+    instagram: "AnQa’yı Instagram’da takip edin",
+  },
+} as const;
+
+export function MobileNavigation({ language, links }: MobileNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const t = labels[language];
 
   useEffect(() => {
     if (!isOpen) return;
@@ -54,7 +91,7 @@ export function MobileNavigation({ links }: MobileNavigationProps) {
         type="button"
         aria-controls="mobile-navigation-panel"
         aria-expanded={isOpen}
-        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-label={isOpen ? t.close : t.open}
         onClick={() => setIsOpen((open) => !open)}
       >
         <span className={styles.icon} aria-hidden="true">
@@ -68,7 +105,7 @@ export function MobileNavigation({ links }: MobileNavigationProps) {
         id="mobile-navigation-panel"
         aria-hidden={!isOpen}
       >
-        <nav className={styles.navigation} aria-label="Mobile navigation">
+        <nav className={styles.navigation} aria-label={t.navigation}>
           {links.map((link) => (
             <Link
               href={link.href}
@@ -88,7 +125,7 @@ export function MobileNavigation({ links }: MobileNavigationProps) {
           rel="noreferrer"
         >
           <ArrowUpRight aria-hidden="true" />
-          <span>Follow AnQa on Instagram</span>
+          <span>{t.instagram}</span>
         </a>
       </div>
     </div>

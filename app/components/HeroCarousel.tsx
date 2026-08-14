@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "./HeroCarousel.module.css";
 
-type Language = "en" | "ar" | "it" | "fr";
+type Language = "en" | "ar" | "it" | "fr" | "tr";
 
 const slides = [
   {
@@ -69,11 +69,11 @@ const content: Record<Language, CarouselCopy> = {
       palestinians: {
         alt: "ممثلون يؤدون عرض كل ما تبقى لي على المسرح",
         title: "الفلسطينيون هم عيناك",
-        text: "تصنع عنقاء مسرحاً جريئاً يعبر بين اللغات والأماكن والناس.",
+        text: '"الفلسطينيون هم عيناك، وشمك. الفلسطينيون هم اسمك، أحلامك، أفكارك، وكوفيتك."',
       },
       "meeting-place": {
         alt: "ممثل تحت ضوء مسرحي أزرق",
-        title: "المسرح مساحة للقاء.",
+        title: "ونحن بحاجة إلى مساعدتكم.",
         text: "يجتمع الفنانون والجمهور من خلال حكايات حيّة ومباشرة.",
       },
       "next-chapter": {
@@ -93,11 +93,11 @@ const content: Record<Language, CarouselCopy> = {
       palestinians: {
         alt: "Attori in scena nello spettacolo All That's Left to Me",
         title: "I palestinesi sono i tuoi occhi",
-        text: "AnQa crea un teatro audace che attraversa lingue, luoghi e persone.",
+        text: '"I palestinesi sono i tuoi occhi, il tuo tatuaggio. I palestinesi sono il tuo nome, i tuoi sogni, i tuoi pensieri e la tua kefiah."',
       },
       "meeting-place": {
         alt: "Attore in silhouette sotto una luce blu",
-        title: "Il palco è un luogo d’incontro.",
+        title: "E abbiamo bisogno del vostro aiuto.",
         text: "Artisti e pubblico si incontrano attraverso storie vive e immediate.",
       },
       "next-chapter": {
@@ -117,17 +117,41 @@ const content: Record<Language, CarouselCopy> = {
       palestinians: {
         alt: "Des comédiens jouent All That's Left to Me sur scène",
         title: "Les Palestiniens sont tes yeux",
-        text: "AnQa crée un théâtre audacieux qui traverse les langues, les lieux et les publics.",
+        text: '« Les Palestiniens sont tes yeux, ton tatouage. Les Palestiniens sont ton nom, tes rêves, tes pensées et ton keffieh. »',
       },
       "meeting-place": {
         alt: "Comédien en silhouette sous une lumière bleue",
-        title: "La scène est un lieu de rencontre.",
+        title: "Et nous avons besoin de votre aide.",
         text: "Artistes et publics se retrouvent autour de récits vivants et immédiats.",
       },
       "next-chapter": {
         alt: "Faisceaux lumineux au-dessus d’un public",
         title: "Le prochain chapitre commence ici.",
         text: "De nouveaux spectacles, collaborations et rencontres prennent forme.",
+      },
+    },
+  },
+  tr: {
+    label: "AnQa’dan öne çıkanlar",
+    slidesLabel: "Karusel slaytları",
+    previous: "Önceki slayt",
+    next: "Sonraki slayt",
+    goTo: "Slayta git",
+    slides: {
+      palestinians: {
+        alt: "All That’s Left to Me oyununu sahnede sergileyen oyuncular",
+        title: "Filistinliler senin gözlerindir",
+        text: '“Filistinliler gözlerindir, dövmendir. Filistinliler adındır, düşlerindir, düşüncelerindir ve kefiyendir.”',
+      },
+      "meeting-place": {
+        alt: "Mavi sahne ışığı altında siluet hâlinde bir oyuncu",
+        title: "Ve yardımınıza ihtiyacımız var.",
+        text: "Sanatçılar ve izleyiciler canlı, doğrudan anlatılar aracılığıyla bir araya geliyor.",
+      },
+      "next-chapter": {
+        alt: "Bir tiyatro izleyicisinin üzerinde kesişen sahne ışıkları",
+        title: "Yeni bölüm burada başlıyor.",
+        text: "Yeni gösteriler, iş birlikleri ve buluşmalar şekilleniyor.",
       },
     },
   },

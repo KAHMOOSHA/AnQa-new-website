@@ -69,8 +69,10 @@
   filter: brightness(0) invert(93%) sepia(20%) saturate(501%) hue-rotate(345deg)
     brightness(107%) contrast(97%);
   height: 8.93rem;
+  left: 0;
   max-width: none;
   position: absolute;
+  top: 0;
   transform: translate(-5.29rem, -1.9rem);
   transition: filter 180ms ease;
   width: 12.67rem;

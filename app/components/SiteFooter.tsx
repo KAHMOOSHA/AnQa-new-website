@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AnimatedFooterCanvas } from "./AnimatedFooterCanvas";
 import styles from "./SiteFooter.module.css";
 
-type Language = "en" | "ar" | "it" | "fr";
+type Language = "en" | "ar" | "it" | "fr" | "tr";
 
 type FooterLink = {
   href: string;
@@ -15,6 +15,7 @@ type FooterCopy = {
   contact: string;
   explore: string;
   navigationLabel: string;
+  copyright: string;
 };
 
 const footerCopy: Record<Language, FooterCopy> = {
@@ -23,24 +24,35 @@ const footerCopy: Record<Language, FooterCopy> = {
     contact: "Contact",
     explore: "Explore",
     navigationLabel: "Footer navigation",
+    copyright: "AnQa Theatre Company",
   },
   ar: {
     action: "كيفية المشاركة",
     contact: "تواصل معنا",
     explore: "استكشف",
     navigationLabel: "روابط التذييل",
+    copyright: "فرقة عنقاء المسرحية",
   },
   it: {
     action: "Come partecipare",
     contact: "Contatti",
     explore: "Esplora",
     navigationLabel: "Navigazione a piè di pagina",
+    copyright: "Compagnia teatrale AnQa",
   },
   fr: {
     action: "Comment participer",
     contact: "Contact",
     explore: "Explorer",
     navigationLabel: "Navigation du pied de page",
+    copyright: "Compagnie théâtrale AnQa",
+  },
+  tr: {
+    action: "Nasıl katılabilirsiniz",
+    contact: "İletişim",
+    explore: "Keşfet",
+    navigationLabel: "Alt bilgi gezinmesi",
+    copyright: "AnQa Tiyatro Topluluğu",
   },
 };
 
@@ -114,7 +126,7 @@ export function SiteFooter({ language, links, year }: SiteFooterProps) {
         </div>
 
         <div className={styles.bottomLine}>
-          <span>© {year} AnQa Theatre Company</span>
+          <span>© {year} {t.copyright}</span>
         </div>
       </div>
     </footer>

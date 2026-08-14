@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import styles from "./ParticipationCta.module.css";
 
-type Language = "en" | "ar" | "it" | "fr";
+type Language = "en" | "ar" | "it" | "fr" | "tr";
 
 const content: Record<Language, { heading: string; action: string }> = {
   en: {
@@ -22,6 +22,11 @@ const content: Record<Language, { heading: string; action: string }> = {
     heading: "Faisons du théâtre ensemble",
     action:
       "Accueillez une représentation le 15 octobre — Rejoignez la première mondiale",
+  },
+  tr: {
+    heading: "Birlikte tiyatro yapalım",
+    action:
+      "15 Ekim’de bir gösteriye ev sahipliği yapın — Dünya prömiyerine katılın",
   },
 };
 

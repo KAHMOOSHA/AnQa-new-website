@@ -103,6 +103,10 @@
     font-size: clamp(3.5rem, 19vw, 5rem);
   }
 
+  :global([lang="tr"]) .header h2 {
+    font-size: clamp(3.25rem, 15vw, 4.5rem);
+  }
+
   .imageFrame {
     aspect-ratio: 4 / 3;
     margin-top: 2rem;
