@@ -38,8 +38,8 @@ export function AboutUsSection() {
       >
         <Image
           className={styles.image}
-          src="/images/All thats left to me - Queen 01.jpg"
-          alt="AnQa performers on stage during All That’s Left to Me"
+          src="/images/All thats left to me - Odysseus Telemachus 02.jpg"
+          alt="Odysseus and Telemachus on stage during All That’s Left to Me"
           fill
           loading="eager"
           sizes="(max-width: 600px) 100vw, 90vw"
