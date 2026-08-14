@@ -1,4 +1,4 @@
-import { Globe2 } from "lucide-react";
+import { Globe } from "lucide-react";
 import Link from "next/link";
 import styles from "./LanguageMenu.module.css";
 
@@ -21,7 +21,7 @@ export function LanguageMenu({
   return (
     <details className={styles.menu}>
       <summary aria-label="Choose language" title="Choose language">
-        <Globe2 aria-hidden="true" size={21} strokeWidth={1.8} />
+        <Globe aria-hidden="true" size={21} strokeWidth={1.8} />
         <span className={styles.srOnly}>Choose language</span>
       </summary>
       <div className={styles.dropdown}>

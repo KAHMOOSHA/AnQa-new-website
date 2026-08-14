@@ -1,8 +1,7 @@
 .carousel {
-  height: 90vh;
-  height: 90svh;
+  height: calc(100vh - var(--site-header-height));
+  height: calc(100svh - var(--site-header-height));
   margin-block-end: var(--section-gap);
-  min-height: 34rem;
   overflow: hidden;
   position: relative;
 }
@@ -138,10 +137,6 @@
 }
 
 @media (max-width: 600px) {
-  .carousel {
-    min-height: 31rem;
-  }
-
   .copy {
     bottom: 6rem;
     width: 88vw;
