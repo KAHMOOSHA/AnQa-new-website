@@ -1,0 +1,51 @@
+.section {
+  color: var(--page-text);
+  margin: 0 auto var(--section-gap);
+  max-width: 1440px;
+  padding-inline: var(--section-inline);
+}
+
+.section h2 {
+  font-size: clamp(3rem, 7vw, 7rem);
+  letter-spacing: -0.065em;
+  line-height: 0.94;
+  margin: 0 0 clamp(2.5rem, 5vw, 4.5rem);
+  max-width: 10ch;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.copy {
+  max-width: 48rem;
+}
+
+.copy p {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.62;
+  margin: 0;
+}
+
+.copy p + p {
+  margin-top: 1.75rem;
+}
+
+.copy cite {
+  font-style: italic;
+}
+
+:global([dir="rtl"]) .section,
+:global([dir="rtl"]) .copy p {
+  font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding-inline: 1.25rem;
+  }
+
+  .section h2 {
+    max-width: none;
+  }
+}

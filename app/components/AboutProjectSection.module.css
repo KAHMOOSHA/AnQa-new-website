@@ -59,7 +59,6 @@
 }
 
 .chapter {
-  border-block-end: 1px solid var(--line);
   display: grid;
   gap: clamp(2.5rem, 6vw, 6rem);
   grid-template-columns: minmax(14rem, 0.75fr) minmax(0, 1.25fr);
@@ -67,7 +66,6 @@
 }
 
 .chapter:last-child {
-  border-block-end: 0;
   padding-block-end: 0;
 }
 

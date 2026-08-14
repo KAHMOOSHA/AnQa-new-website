@@ -34,7 +34,7 @@ export function ParticipationCta({ language }: { language: Language }) {
       <div className={styles.splitImage} aria-hidden="true" />
       <div className={styles.splitContent}>
         <h2 id="participation-heading">{t.heading}</h2>
-        <Link className={styles.link} href={`/${language}/support#how-to-join`}>
+        <Link className={styles.link} href={`/${language}/join#how-to-join`}>
           <span>{t.action}</span>
           <ArrowUpRight aria-hidden="true" />
         </Link>
@@ -50,7 +50,7 @@ export function ParticipationCta({ language }: { language: Language }) {
     >
       <div className={styles.fullBleedContent}>
         <h2 id="participation-heading">{t.heading}</h2>
-        <Link className={styles.link} href={`/${language}/support#how-to-join`}>
+        <Link className={styles.link} href={`/${language}/join#how-to-join`}>
           <span>{t.action}</span>
           <ArrowUpRight aria-hidden="true" />
         </Link>

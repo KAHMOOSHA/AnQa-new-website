@@ -43,7 +43,6 @@
   background-position: 52% center;
   background-repeat: no-repeat;
   background-size: cover;
-  border: 1px solid var(--cream);
   display: flex;
   isolation: isolate;
   margin: 0 var(--section-inline) var(--section-gap);
@@ -85,7 +84,6 @@
 .link {
   align-items: center;
   background: var(--black);
-  border: 1px solid var(--red);
   color: var(--cream);
   display: flex;
   font-size: clamp(0.95rem, 1.5vw, 1.2rem);

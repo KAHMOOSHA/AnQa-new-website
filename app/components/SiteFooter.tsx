@@ -52,7 +52,7 @@ type SiteFooterProps = {
 
 export function SiteFooter({ language, links, year }: SiteFooterProps) {
   const t = footerCopy[language];
-  const howToJoinHref = `/${language}/support#how-to-join`;
+  const howToJoinHref = `/${language}/join#how-to-join`;
 
   return (
     <footer className={styles.footer}>

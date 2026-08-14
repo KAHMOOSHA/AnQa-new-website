@@ -42,7 +42,6 @@
 
 .dropdown {
   background: var(--cream);
-  border-top: 0.25rem solid var(--mint);
   box-shadow: 0 1.25rem 4rem rgba(0, 0, 0, 0.35);
   display: grid;
   inset-inline-end: 0;

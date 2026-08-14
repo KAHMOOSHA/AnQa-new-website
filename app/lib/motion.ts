@@ -24,8 +24,24 @@ export const fadeRise: Variants = {
   },
 };
 
+export const softFadeRise: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
+export const softRevealTransition: Transition = {
+  duration: 0.72,
+  ease: editorialEase,
+};
+
 export const revealViewport = {
-  amount: 0.2,
-  margin: "0px 0px -8% 0px",
+  amount: 0.1,
+  margin: "0px 0px 12% 0px",
   once: true,
 } as const;

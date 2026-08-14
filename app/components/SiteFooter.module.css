@@ -94,12 +94,7 @@
 .contact a,
 .socialLink {
   color: inherit;
-  text-decoration-color: transparent;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.25em;
-  transition:
-    color 180ms ease,
-    text-decoration-color 180ms ease;
+  transition: color 180ms ease;
 }
 
 .linkList a:hover,
@@ -109,7 +104,6 @@
 .socialLink:hover,
 .socialLink:focus-visible {
   color: var(--mint);
-  text-decoration-color: currentColor;
 }
 
 .socialLink:hover .instagramIcon,

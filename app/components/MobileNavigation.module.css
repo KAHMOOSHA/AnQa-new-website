@@ -62,7 +62,6 @@
 
 .panel {
   background: var(--page-bg);
-  border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   height: calc(100svh - 100%);
@@ -91,7 +90,6 @@
 }
 
 .navigation a {
-  border-bottom: 1px solid var(--line);
   color: var(--page-text);
   font-size: clamp(2rem, 8vw, 4rem);
   font-weight: 700;

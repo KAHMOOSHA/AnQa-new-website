@@ -1,12 +1,10 @@
 .list {
-  border-block-start: 2px solid var(--brown);
   list-style: none;
   margin: clamp(3.5rem, 8vw, 7rem) 0 0;
   padding: 0;
 }
 
 .list li {
-  border-block-end: 1px solid rgba(65, 16, 11, 0.48);
   padding: clamp(1.25rem, 2.5vw, 2.25rem) 0;
 }
 

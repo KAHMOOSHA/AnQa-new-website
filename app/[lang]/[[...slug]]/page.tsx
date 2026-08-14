@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { AutoHideHeader } from "../../components/AutoHideHeader";
 import { AboutProjectSection } from "../../components/AboutProjectSection";
 import { AboutUsSection } from "../../components/AboutUsSection";
@@ -11,21 +11,23 @@ import { LanguageMenu } from "../../components/LanguageMenu";
 import { MobileNavigation } from "../../components/MobileNavigation";
 import { ParticipationCta } from "../../components/ParticipationCta";
 import { ParticipatingVenuesCredits } from "../../components/ParticipatingVenuesCredits";
+import { ProjectIntroductionSection } from "../../components/ProjectIntroductionSection";
 import { SiteFooter } from "../../components/SiteFooter";
 import { TeamCreditsSection } from "../../components/TeamCreditsSection";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { WhoThisProjectIsFor } from "../../components/WhoThisProjectIsFor";
+import { WhyOctober15Section } from "../../components/WhyOctober15Section";
 import styles from "./page.module.css";
 
 const languages = ["en", "ar", "it", "fr"] as const;
 type Language = (typeof languages)[number];
-type Page = "home" | "about" | "partnerships" | "support";
+type Page = "home" | "about" | "partnerships" | "join";
 
 const pageSlugs: Record<Page, string> = {
   home: "",
   about: "about",
   partnerships: "partnerships",
-  support: "support",
+  join: "join",
 };
 
 const copy: Record<
@@ -47,7 +49,7 @@ const copy: Record<
       home: "Home",
       about: "About",
       partnerships: "Partnerships",
-      support: "Support",
+      join: "Join",
     },
     eyebrow: "Theatre across cultures",
     hero: "Stories take flight.",
@@ -61,7 +63,7 @@ const copy: Record<
       about: "Meet the people, purpose, and artistic vision behind AnQa.",
       partnerships:
         "Discover how cultural organizations and creative partners can work with AnQa.",
-      support:
+      join:
         "Help independent, multilingual theatre reach more people and places.",
     },
   },
@@ -70,7 +72,7 @@ const copy: Record<
       home: "الرئيسية",
       about: "عن عنقاء",
       partnerships: "الشراكات",
-      support: "ادعمنا",
+      join: "انضم إلينا",
     },
     eyebrow: "مسرح يعبر الثقافات",
     hero: "حين تحلّق الحكايات.",
@@ -83,7 +85,7 @@ const copy: Record<
       about: "تعرّفوا إلى الأشخاص والرسالة والرؤية الفنية وراء عنقاء.",
       partnerships:
         "اكتشفوا سبل التعاون بين عنقاء والمؤسسات الثقافية والشركاء المبدعين.",
-      support:
+      join:
         "ساعدوا المسرح المستقل متعدد اللغات على الوصول إلى جمهور وأماكن أكثر.",
     },
   },
@@ -92,7 +94,7 @@ const copy: Record<
       home: "Home",
       about: "Chi siamo",
       partnerships: "Partnership",
-      support: "Sostienici",
+      join: "Partecipa",
     },
     eyebrow: "Teatro tra culture",
     hero: "Le storie prendono il volo.",
@@ -106,7 +108,7 @@ const copy: Record<
       about: "Conosci le persone, la missione e la visione artistica di AnQa.",
       partnerships:
         "Scopri come le organizzazioni culturali e i partner creativi possono collaborare con AnQa.",
-      support:
+      join:
         "Aiuta il teatro indipendente e multilingue a raggiungere più persone e luoghi.",
     },
   },
@@ -115,7 +117,7 @@ const copy: Record<
       home: "Accueil",
       about: "À propos",
       partnerships: "Partenariats",
-      support: "Soutenir",
+      join: "Participer",
     },
     eyebrow: "Le théâtre entre les cultures",
     hero: "Les histoires prennent leur envol.",
@@ -130,7 +132,7 @@ const copy: Record<
         "Découvrez les personnes, la mission et la vision artistique qui animent AnQa.",
       partnerships:
         "Découvrez comment les organisations culturelles et partenaires créatifs peuvent collaborer avec AnQa.",
-      support:
+      join:
         "Aidez le théâtre indépendant et multilingue à toucher davantage de publics et de territoires.",
     },
   },
@@ -138,6 +140,7 @@ const copy: Record<
 
 function resolvePage(slug?: string[]): Page | null {
   if (!slug?.length) return "home";
+  if (slug.length === 1 && slug[0] === "support") return "join";
   const match = Object.entries(pageSlugs).find(
     ([, value]) => value === slug[0],
   );
@@ -168,6 +171,9 @@ export default async function LocalizedPage({
   const { lang: rawLang, slug } = await params;
   if (!languages.includes(rawLang as Language)) notFound();
   const lang = rawLang as Language;
+  if (slug?.length === 1 && slug[0] === "support") {
+    redirect(`/${lang}/join`);
+  }
   const page = resolvePage(slug);
   if (!page) notFound();
   const t = copy[lang];
@@ -242,11 +248,13 @@ export default async function LocalizedPage({
               <span className={styles.eventStatus}>{t.eventStatus}</span>
             </section>
             */}
+            <ProjectIntroductionSection />
+            <WhyOctober15Section />
             <ParticipationCta language={lang} />
           </>
         ) : (
           <>
-            {page !== "support" &&
+            {page !== "join" &&
               page !== "about" &&
               page !== "partnerships" && (
               <section className={styles.pageHero}>
@@ -259,13 +267,13 @@ export default async function LocalizedPage({
               <>
                 <AboutUsSection />
                 <TeamCreditsSection />
-                <AboutProjectSection />
               </>
             )}
-            {page === "support" && (
+            {page === "join" && (
               <>
                 <HowToJoinSection language={lang} />
                 <WhoThisProjectIsFor />
+                <AboutProjectSection />
               </>
             )}
             {page === "partnerships" && (
@@ -278,7 +286,7 @@ export default async function LocalizedPage({
       {page !== "partnerships" && (
         <SiteFooter
           language={lang}
-          links={(["about", "partnerships", "support"] as Page[]).map(
+          links={(["about", "partnerships", "join"] as Page[]).map(
             (item) => ({
               href: `/${lang}/${pageSlugs[item]}`,
               label: t.nav[item],

@@ -86,7 +86,6 @@
 }
 
 .applicationProcess {
-  border-top: 1px solid rgba(65, 16, 11, 0.28);
   display: grid;
   gap: clamp(3rem, 7vw, 7rem);
   grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
@@ -120,7 +119,6 @@
 
 .emailLink:hover,
 .emailLink:focus-visible {
-  border-bottom: 1px solid var(--brown);
   color: var(--brown);
   outline: none;
 }
@@ -143,15 +141,10 @@
 }
 
 .requirements li {
-  border-top: 1px solid rgba(65, 16, 11, 0.2);
   display: grid;
   gap: 1.25rem;
   grid-template-columns: auto 1fr;
   padding: 1.5rem 0;
-}
-
-.requirements li:last-child {
-  border-bottom: 1px solid rgba(65, 16, 11, 0.2);
 }
 
 .requirementNumber {
@@ -188,12 +181,30 @@
   color: var(--mint);
 }
 
+.applicationSynergies {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  line-height: 1.6;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  max-width: 62rem;
+}
+
+.applicationSynergies strong {
+  color: var(--red);
+  font-weight: 600;
+}
+
+.applicationSynergies cite {
+  font-style: italic;
+}
+
 :global([dir="rtl"]) .section h2,
 :global([dir="rtl"]) .premiereStatement,
 :global([dir="rtl"]) .introduction,
 :global([dir="rtl"]) .applicationHeading h3,
 :global([dir="rtl"]) .requirements p,
-:global([dir="rtl"]) .note {
+:global([dir="rtl"]) .note,
+:global([dir="rtl"]) .applicationSynergies {
   font-family: var(--font-arabic), Tahoma, Arial, sans-serif;
   letter-spacing: -0.035em;
 }
