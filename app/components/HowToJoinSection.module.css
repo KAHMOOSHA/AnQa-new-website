@@ -52,7 +52,7 @@
   aspect-ratio: 1;
   background: var(--red);
   box-shadow: 0.65rem 0.65rem 0 var(--brown);
-  color: var(--cream);
+  color: var(--white);
   display: grid;
   padding: clamp(1.25rem, 2.5vw, 2rem);
   width: clamp(10rem, 17vw, 14rem);
@@ -168,7 +168,7 @@
 
 .note {
   background: var(--brown);
-  color: var(--cream);
+  color: var(--white);
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(1.05rem, 1.7vw, 1.3rem);
   line-height: 1.55;

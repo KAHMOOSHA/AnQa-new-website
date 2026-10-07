@@ -10,25 +10,38 @@ import { HowToJoinSection } from "../../components/HowToJoinSection";
 import { LanguageMenu } from "../../components/LanguageMenu";
 import { MobileNavigation } from "../../components/MobileNavigation";
 import { ParticipationCta } from "../../components/ParticipationCta";
-import { ParticipatingVenuesCredits } from "../../components/ParticipatingVenuesCredits";
+// The original scrolling Partnerships section is intentionally kept in
+// app/components/ParticipatingVenuesCredits.tsx while the Venues page is developed.
+// import { ParticipatingVenuesCredits } from "../../components/ParticipatingVenuesCredits";
 import { ProjectIntroductionSection } from "../../components/ProjectIntroductionSection";
 import { SiteFooter } from "../../components/SiteFooter";
 import { TeamCreditsSection } from "../../components/TeamCreditsSection";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import { WhoThisProjectIsFor } from "../../components/WhoThisProjectIsFor";
 import { WhyOctober15Section } from "../../components/WhyOctober15Section";
+import { VenuesSection } from "../../components/VenuesSection";
 import styles from "./page.module.css";
 
 const languages = ["en", "ar", "it", "fr", "tr"] as const;
 type Language = (typeof languages)[number];
-type Page = "home" | "about" | "partnerships" | "join";
+type Page = "home" | "about" | "venues" | "join";
 
 const pageSlugs: Record<Page, string> = {
   home: "",
   about: "about",
-  partnerships: "partnerships",
+  venues: "venues",
   join: "join",
 };
+
+export function generateStaticParams() {
+  return languages.flatMap((lang) => [
+    { lang, slug: [] },
+    ...(["about", "venues", "join"] as const).map((slug) => ({
+      lang,
+      slug: [slug],
+    })),
+  ]);
+}
 
 const mainNavigationLabels: Record<Language, string> = {
   en: "Main navigation",
@@ -56,7 +69,7 @@ const copy: Record<
     nav: {
       home: "Home",
       about: "About",
-      partnerships: "Partnerships",
+      venues: "Venues",
       join: "Join",
     },
     eyebrow: "Theatre across cultures",
@@ -69,8 +82,8 @@ const copy: Record<
     eventStatus: "Details coming soon",
     pageIntro: {
       about: "Meet the people, purpose, and artistic vision behind AnQa.",
-      partnerships:
-        "Discover how cultural organizations and creative partners can work with AnQa.",
+      venues:
+        "Explore the theatres, organizations, and cities participating with AnQa.",
       join:
         "Help independent, multilingual theatre reach more people and places.",
     },
@@ -79,7 +92,7 @@ const copy: Record<
     nav: {
       home: "الرئيسية",
       about: "عن عنقاء",
-      partnerships: "الشراكات",
+      venues: "المساحات المشاركة",
       join: "انضم إلينا",
     },
     eyebrow: "مسرح يعبر الثقافات",
@@ -91,8 +104,8 @@ const copy: Record<
     eventStatus: "التفاصيل قريباً",
     pageIntro: {
       about: "تعرّفوا إلى الأشخاص والرسالة والرؤية الفنية وراء عنقاء.",
-      partnerships:
-        "اكتشفوا سبل التعاون بين عنقاء والمؤسسات الثقافية والشركاء المبدعين.",
+      venues:
+        "اكتشفوا المسارح والمنظمات والمدن المشاركة مع عنقاء.",
       join:
         "ساعدوا المسرح المستقل متعدد اللغات على الوصول إلى جمهور وأماكن أكثر.",
     },
@@ -101,7 +114,7 @@ const copy: Record<
     nav: {
       home: "Home",
       about: "Chi siamo",
-      partnerships: "Partnership",
+      venues: "Luoghi",
       join: "Partecipa",
     },
     eyebrow: "Teatro tra culture",
@@ -114,8 +127,8 @@ const copy: Record<
     eventStatus: "Dettagli in arrivo",
     pageIntro: {
       about: "Conosci le persone, la missione e la visione artistica di AnQa.",
-      partnerships:
-        "Scopri come le organizzazioni culturali e i partner creativi possono collaborare con AnQa.",
+      venues:
+        "Esplora i teatri, le organizzazioni e le città che partecipano con AnQa.",
       join:
         "Aiuta il teatro indipendente e multilingue a raggiungere più persone e luoghi.",
     },
@@ -124,7 +137,7 @@ const copy: Record<
     nav: {
       home: "Accueil",
       about: "À propos",
-      partnerships: "Partenariats",
+      venues: "Lieux",
       join: "Participer",
     },
     eyebrow: "Le théâtre entre les cultures",
@@ -138,8 +151,8 @@ const copy: Record<
     pageIntro: {
       about:
         "Découvrez les personnes, la mission et la vision artistique qui animent AnQa.",
-      partnerships:
-        "Découvrez comment les organisations culturelles et partenaires créatifs peuvent collaborer avec AnQa.",
+      venues:
+        "Découvrez les théâtres, les organisations et les villes qui participent avec AnQa.",
       join:
         "Aidez le théâtre indépendant et multilingue à toucher davantage de publics et de territoires.",
     },
@@ -148,7 +161,7 @@ const copy: Record<
     nav: {
       home: "Ana Sayfa",
       about: "Hakkımızda",
-      partnerships: "Ortaklıklar",
+      venues: "Mekânlar",
       join: "Katıl",
     },
     eyebrow: "Kültürler arasında tiyatro",
@@ -162,8 +175,8 @@ const copy: Record<
     pageIntro: {
       about:
         "AnQa’nın ardındaki insanları, amacı ve sanatsal vizyonu tanıyın.",
-      partnerships:
-        "Kültür kuruluşlarının ve yaratıcı ortakların AnQa ile nasıl çalışabileceğini keşfedin.",
+      venues:
+        "AnQa ile katılan tiyatroları, kuruluşları ve şehirleri keşfedin.",
       join:
         "Bağımsız, çok dilli tiyatronun daha fazla insana ve yere ulaşmasına yardımcı olun.",
     },
@@ -292,7 +305,7 @@ export default async function LocalizedPage({
           <>
             {page !== "join" &&
               page !== "about" &&
-              page !== "partnerships" && (
+              page !== "venues" && (
               <section className={styles.pageHero}>
                 <p className="eyebrow">AnQa Theatre</p>
                 <h1>{t.nav[page]}</h1>
@@ -312,25 +325,24 @@ export default async function LocalizedPage({
                 <AboutProjectSection language={lang} />
               </>
             )}
+            {page === "venues" && <VenuesSection language={lang} />}
+            {/* The former Partnerships page remains available as a component for
+                reference while its replacement is finalized.
             {page === "partnerships" && (
               <ParticipatingVenuesCredits language={lang} />
-            )}
+            )} */}
           </>
         )}
       </main>
 
-      {page !== "partnerships" && (
-        <SiteFooter
-          language={lang}
-          links={(["about", "partnerships", "join"] as Page[]).map(
-            (item) => ({
-              href: `/${lang}/${pageSlugs[item]}`,
-              label: t.nav[item],
-            }),
-          )}
-          year={new Date().getFullYear()}
-        />
-      )}
+      <SiteFooter
+        language={lang}
+        links={(["about", "venues", "join"] as Page[]).map((item) => ({
+          href: `/${lang}/${pageSlugs[item]}`,
+          label: t.nav[item],
+        }))}
+        year={new Date().getFullYear()}
+      />
     </div>
   );
 }

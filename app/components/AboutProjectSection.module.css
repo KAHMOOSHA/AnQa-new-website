@@ -38,7 +38,7 @@
 }
 
 .header h2 {
-  color: var(--cream);
+  color: var(--white);
   font-size: clamp(3.5rem, 7.5vw, 7.5rem);
   letter-spacing: -0.075em;
   line-height: 0.88;

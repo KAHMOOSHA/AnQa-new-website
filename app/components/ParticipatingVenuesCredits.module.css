@@ -4,7 +4,7 @@
 
 .stage {
   background: #050606;
-  color: var(--cream);
+  color: var(--white);
   min-height: 100svh;
   overflow: hidden;
   position: relative;
@@ -51,7 +51,7 @@
 }
 
 .titleCard span {
-  color: var(--cream);
+  color: var(--white);
   font-size: clamp(1rem, 1.8vw, 1.35rem);
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -59,7 +59,7 @@
 }
 
 .titleCard strong {
-  color: var(--cream);
+  color: var(--white);
   font-size: clamp(2.8rem, 7vw, 6.8rem);
   letter-spacing: -0.06em;
   line-height: 0.9;
@@ -73,7 +73,7 @@
 }
 
 .creditChapter > h3 {
-  color: var(--cream);
+  color: var(--white);
   font-size: clamp(2.4rem, 6vw, 5.5rem);
   letter-spacing: -0.055em;
   line-height: 0.95;
@@ -87,7 +87,7 @@
 }
 
 .creditGroup h4 {
-  color: var(--cream);
+  color: var(--white);
   font-size: clamp(1.15rem, 2.1vw, 1.7rem);
   letter-spacing: 0.13em;
   margin: 0 0 2.5rem;
@@ -96,7 +96,7 @@
 }
 
 .creditRow {
-  color: var(--cream);
+  color: var(--white);
   display: grid;
   gap: clamp(1.5rem, 4vw, 4rem);
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -123,7 +123,7 @@
 }
 
 .endMark {
-  color: var(--cream);
+  color: var(--white);
   font-size: clamp(3.5rem, 10vw, 9rem);
   font-weight: 700;
   letter-spacing: -0.07em;
@@ -134,7 +134,7 @@
 .playbackFeedback {
   align-items: center;
   animation: playback-feedback 1.3s ease both;
-  color: var(--cream);
+  color: var(--white);
   display: flex;
   height: 4rem;
   justify-content: center;

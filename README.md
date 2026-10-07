@@ -2,7 +2,7 @@
 
 A multilingual website for AnQa, an Italian-Palestinian theatre company, and its theatrical reading project **Palestinians Are Your Eyes**. The project brings together six texts by Gazan authors and invites groups to organize performances on October 15, 2026.
 
-The site introduces the company and team, explains how to participate, and showcases participating venues.
+The site introduces the company and team, explains how to participate, and lists participating venues.
 
 ## Features
 
@@ -57,7 +57,7 @@ Replace `{lang}` with `en`, `ar`, `it`, `fr`, or `tr`.
 | `/{lang}` | Homepage and project introduction |
 | `/{lang}/about` | Company story and team |
 | `/{lang}/join` | Participation instructions and project guidelines |
-| `/{lang}/partnerships` | Participating venues |
+| `/{lang}/venues` | Participating venues |
 
 ## Project structure
 
@@ -74,3 +74,14 @@ public/                Static assets referenced by the site
 HANDOFF.md             Detailed project notes and development history
 ```
 
+## Updating the site
+
+- **Text and translations:** Edit the corresponding component in `app/components/`. Navigation labels and page descriptions are in `app/[lang]/[[...slug]]/page.tsx`. Keep all five languages in sync.
+- **Styles:** Use each component's `.module.css` file for local styling and `app/globals.css` for shared styles and theme values.
+- **Venues:** Update `app/data/participatingVenues.ts`, keeping venue IDs unique.
+- **Assets:** Place images and fonts under `public/` and reference them using root-relative paths, such as `/images/photo.jpg`. Ensure assets referenced in the code are available in your checkout.
+- **Animations:** Shared animation settings live in `app/lib/motion.ts`.
+
+After application changes, run `npm run build` and check mobile and desktop layouts, both themes, and all languages, including Arabic right-to-left behavior. No automated test script is currently configured.
+
+See [HANDOFF.md](HANDOFF.md) for more detailed notes. Some handoff details describe an earlier workstation or repository state; use the current source files and package scripts as the reference.

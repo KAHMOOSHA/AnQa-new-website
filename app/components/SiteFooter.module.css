@@ -1,6 +1,6 @@
 .footer {
   background: var(--brown);
-  color: var(--cream);
+  color: var(--white);
   isolation: isolate;
   min-height: 22rem;
   overflow: hidden;
