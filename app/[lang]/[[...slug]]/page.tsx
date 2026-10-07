@@ -6,6 +6,7 @@ import { AutoHideHeader } from "../../components/AutoHideHeader";
 import { AboutProjectSection } from "../../components/AboutProjectSection";
 import { AboutUsSection } from "../../components/AboutUsSection";
 import { HeroCarousel } from "../../components/HeroCarousel";
+import { EventCountdown } from "../../components/EventCountdown";
 import { HowToJoinSection } from "../../components/HowToJoinSection";
 import { LanguageMenu } from "../../components/LanguageMenu";
 import { MobileNavigation } from "../../components/MobileNavigation";
@@ -275,6 +276,7 @@ export default async function LocalizedPage({
         {page === "home" ? (
           <>
             <HeroCarousel language={lang} />
+            <EventCountdown language={lang} />
             {/* Original homepage introduction — parked until its content is finalized.
             <section className={styles.hero}>
               <p className="eyebrow">{t.eyebrow}</p>

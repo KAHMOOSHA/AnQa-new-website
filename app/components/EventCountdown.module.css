@@ -1,0 +1,65 @@
+.section {
+  align-items: center;
+  color: var(--page-text);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+  text-align: center;
+  margin: 0 var(--section-inline) var(--section-gap);
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  border: 3px solid var(--line);
+}
+
+.date {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.date time {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+}
+
+.date span,
+.unit dt,
+.ended {
+  color: var(--page-muted);
+  font-size: 0.8rem;
+}
+
+.units {
+  display: grid;
+  gap: clamp(0.75rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  text-align: center;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.unit dd {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  order: -1;
+}
+
+.ended {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .section {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}
