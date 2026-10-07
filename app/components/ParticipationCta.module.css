@@ -77,14 +77,14 @@
 }
 
 .fullBleedContent h2 {
-  color: var(--cream);
+  color: var(--white);
   text-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.36);
 }
 
 .link {
   align-items: center;
   background: var(--black);
-  color: var(--cream);
+  color: var(--white);
   display: flex;
   font-size: clamp(0.95rem, 1.5vw, 1.2rem);
   font-weight: 700;
@@ -108,7 +108,7 @@
 .link:hover,
 .link:focus-visible {
   background: var(--red);
-  color: var(--cream);
+  color: var(--white);
   outline: none;
 }
 

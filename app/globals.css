@@ -24,11 +24,12 @@
   --mint: #67b293;
   --red: #e33b3b;
   --cream: #fbeccb;
+  --white: #ffffff;
   --brown: #41100b;
   --black: #0d0f0e;
   --page-bg: var(--black);
-  --page-text: var(--cream);
-  --page-muted: rgba(251, 236, 203, 0.76);
+  --page-text: var(--white);
+  --page-muted: rgba(255, 255, 255, 0.76);
   --header-idle: color-mix(in srgb, var(--red) 10%, transparent);
   --header-solid: var(--black);
   --brand-filter: brightness(0) invert(93%) sepia(20%) saturate(501%)

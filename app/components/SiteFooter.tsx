@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatedFooterCanvas } from "./AnimatedFooterCanvas";
 import styles from "./SiteFooter.module.css";
 
 type Language = "en" | "ar" | "it" | "fr" | "tr";
@@ -68,8 +67,6 @@ export function SiteFooter({ language, links, year }: SiteFooterProps) {
 
   return (
     <footer className={styles.footer}>
-      <AnimatedFooterCanvas />
-
       <div className={styles.content}>
         <div className={styles.information}>
           <div className={styles.identity}>
