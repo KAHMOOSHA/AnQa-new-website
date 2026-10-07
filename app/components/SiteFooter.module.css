@@ -34,8 +34,18 @@
 .information {
   display: grid;
   gap: clamp(2rem, 4vw, 4rem);
-  grid-template-columns: 1.2fr 0.8fr 1.25fr 0.65fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 1.25fr) minmax(0, 0.65fr);
   padding-bottom: clamp(2rem, 3.5vw, 3rem);
+}
+
+.information > * {
+  min-width: 0;
+}
+
+.contact a {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
 }
 
 .information h3 {

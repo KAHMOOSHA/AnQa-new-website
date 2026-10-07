@@ -97,9 +97,9 @@ export function SiteFooter({ language, links, year }: SiteFooterProps) {
 
           <div className={styles.contact}>
             <h3>{t.contact}</h3>
-            <a href="mailto:info@anqa.group">info@anqa.group</a>
-            <a href="mailto:progettorec.palestina@gmail.com">
-              progettorec.palestina@gmail.com
+            <a href="mailto:info@anqa.group" dir="ltr">info@anqa.group</a>
+            <a href="mailto:progettorec.palestina@gmail.com" dir="ltr">
+              progettorec.palestina<wbr />@gmail.com
             </a>
           </div>
 
