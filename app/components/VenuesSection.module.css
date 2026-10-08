@@ -199,6 +199,14 @@
   font-style: italic;
 }
 
+.city .address {
+  display: block;
+  font-size: 0.82rem;
+  font-style: normal;
+  margin-block: 0.2rem 0.6rem;
+  overflow-wrap: anywhere;
+}
+
 @keyframes reveal {
   from {
     opacity: 0;

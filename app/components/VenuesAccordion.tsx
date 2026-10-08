@@ -103,7 +103,10 @@ function VenueList({
                 className={!venue.name ? styles.pending : undefined}
                 key={venue.id}
               >
-                {venue.name ?? venuePending}
+                <span dir="auto">{venue.name ?? venuePending}</span>
+                {venue.address && (
+                  <span className={styles.address} dir="auto">{venue.address}</span>
+                )}
               </li>
             ))}
           </ul>
