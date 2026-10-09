@@ -12,14 +12,17 @@ const slides = [
   {
     id: "palestinians",
     image: "/images/All thats-left-to-me-Odysseus-Telemachus 01.jpg",
+    aspectRatio: 6720 / 4480,
   },
   {
     id: "meeting-place",
     image: "/images/Anqa - All that's left to me - Backstage 06.jpeg",
+    aspectRatio: 6240 / 3512,
   },
   {
     id: "next-chapter",
     image: "/images/All thats left to me - Antinous.JPG",
+    aspectRatio: 6720 / 4480,
   },
 ] as const;
 
@@ -208,7 +211,10 @@ export function HeroCarousel({ language }: { language: Language }) {
                   alt={translatedSlide.alt}
                   fill
                   priority={index === 0}
-                  sizes="100vw"
+                  loading={index === 0 || index === selectedIndex ? "eager" : "lazy"}
+                  // Cover scales landscape images to the hero's height on phones.
+                  // Include that uncropped width when selecting the image resolution.
+                  sizes={`max(100vw, ${Math.ceil(slide.aspectRatio * 100)}svh)`}
                 />
                 <div className={styles.shade} aria-hidden="true" />
                 <div className={styles.copy}>

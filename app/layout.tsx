@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@fontsource/cormorant-garamond/400.css";
 import "@fontsource/cormorant-garamond/700.css";
 import "@fontsource/poppins/400.css";
@@ -26,6 +26,12 @@ export const metadata: Metadata = {
     icon: "/anqa_favicon.svg",
     shortcut: "/anqa_favicon.svg",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

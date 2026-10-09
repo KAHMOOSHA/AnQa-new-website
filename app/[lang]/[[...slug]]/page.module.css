@@ -1,8 +1,9 @@
 .siteShell {
-  --site-header-height: 5.65rem;
+  --site-header-height: calc(5.65rem + env(safe-area-inset-top, 0px));
   background: var(--page-bg);
   color: var(--page-text);
   min-height: 100vh;
+  min-height: 100svh;
   transition: background-color 220ms ease, color 220ms ease;
 }
 
@@ -13,7 +14,7 @@
   grid-template-columns: auto 1fr auto;
   height: var(--site-header-height);
   margin: 0 auto;
-  padding: 1rem 5vw;
+  padding: calc(1rem + env(safe-area-inset-top, 0px)) var(--section-inline) 1rem;
   position: sticky;
   inset-block-start: 0;
   inset-inline: 0;
@@ -225,12 +226,12 @@
 
 @media (max-width: 600px) {
   .siteShell {
-    --site-header-height: 4.05rem;
+    --site-header-height: calc(4.05rem + env(safe-area-inset-top, 0px));
   }
 
   .siteHeader {
     gap: 0.6rem;
-    padding-block: 0.65rem;
+    padding-block: calc(0.65rem + env(safe-area-inset-top, 0px)) 0.65rem;
   }
 
   .headerActions {

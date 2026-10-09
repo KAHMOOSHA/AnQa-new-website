@@ -1,14 +1,7 @@
 .carousel {
-  height: calc(100vh - var(--site-header-height));
-  height: calc(100svh - var(--site-header-height));
   margin-block-end: var(--section-gap);
   overflow: hidden;
   position: relative;
-}
-
-.viewport,
-.container {
-  height: 100%;
 }
 
 .viewport {
@@ -21,9 +14,15 @@
 }
 
 .slide {
+  align-items: flex-end;
+  display: flex;
   flex: 0 0 100%;
+  min-height: calc(100vh - var(--site-header-height));
+  min-height: calc(100svh - var(--site-header-height));
   min-width: 0;
   overflow: hidden;
+  padding: 2rem var(--section-inline)
+    calc(clamp(5.5rem, 10svh, 8rem) + env(safe-area-inset-bottom, 0px));
   position: relative;
 }
 
@@ -49,10 +48,8 @@
 }
 
 .copy {
-  bottom: clamp(5.5rem, 10vh, 8rem);
-  inset-inline-start: 5vw;
   max-width: 48rem;
-  position: absolute;
+  position: relative;
   width: min(76vw, 48rem);
   z-index: 2;
 }
@@ -78,10 +75,10 @@
 
 .controls {
   align-items: center;
-  bottom: 2rem;
+  bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
   display: flex;
   gap: 0.75rem;
-  inset-inline-end: 5vw;
+  inset-inline-end: var(--section-inline);
   position: absolute;
   z-index: 3;
 }
@@ -137,9 +134,12 @@
 }
 
 @media (max-width: 600px) {
+  .slide {
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+  }
+
   .copy {
-    bottom: 6rem;
-    width: 88vw;
+    width: 100%;
   }
 
   .copy h1 {
@@ -151,8 +151,8 @@
   }
 
   .controls {
-    bottom: 1.5rem;
-    inset-inline: 5vw;
+    bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    inset-inline: var(--section-inline);
     justify-content: space-between;
   }
 }

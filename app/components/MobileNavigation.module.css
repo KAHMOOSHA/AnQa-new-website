@@ -64,11 +64,15 @@
   background: var(--page-bg);
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 100%);
   height: calc(100svh - 100%);
+  height: calc(100dvh - 100%);
   inset-inline: 0;
   opacity: 0;
   overflow-y: auto;
-  padding: clamp(2rem, 7vw, 4rem) 5vw 2rem;
+  overscroll-behavior-y: contain;
+  padding: clamp(2rem, 7vw, 4rem) var(--section-inline)
+    calc(2rem + env(safe-area-inset-bottom, 0px));
   pointer-events: none;
   position: absolute;
   top: 100%;
@@ -87,6 +91,7 @@
 
 .navigation {
   display: grid;
+  flex-shrink: 0;
 }
 
 .navigation a {
@@ -111,6 +116,7 @@
   align-items: center;
   color: var(--page-text);
   display: flex;
+  flex-shrink: 0;
   font-size: 0.85rem;
   font-weight: 600;
   gap: 0.75rem;
