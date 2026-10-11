@@ -1,5 +1,5 @@
-// Midnight in Europe/Rome on October 15, 2026 (UTC+02:00).
-export const COUNTDOWN_TARGET = "2026-10-15T00:00:00+02:00";
+// Midnight in Asia/Gaza on October 15, 2026 (UTC+03:00).
+export const COUNTDOWN_TARGET = "2026-10-15T00:00:00+03:00";
 const targetTime = Date.parse(COUNTDOWN_TARGET);
 
 export function getCountdown(now: number) {

@@ -10,7 +10,7 @@ const copy = {
   en: {
     title: "Countdown to October 15 - Global premiere",
     date: "October 15, 2026",
-    zone: "Rome time",
+    zone: "Gaza time",
     days: "Days",
     hours: "Hours",
     minutes: "Minutes",
@@ -22,7 +22,7 @@ const copy = {
   ar: {
     title: "العد التنازلي إلى 15 أكتوبر - العرض الأول العالمي",
     date: "15 أكتوبر 2026",
-    zone: "بتوقيت روما",
+    zone: "بتوقيت غزة",
     days: "أيام",
     hours: "ساعات",
     minutes: "دقائق",
@@ -34,7 +34,7 @@ const copy = {
   it: {
     title: "Conto alla rovescia al 15 ottobre - Anteprima mondiale",
     date: "15 ottobre 2026",
-    zone: "Ora di Roma",
+    zone: "Ora di Gaza",
     days: "Giorni",
     hours: "Ore",
     minutes: "Minuti",
@@ -46,7 +46,7 @@ const copy = {
   fr: {
     title: "Compte à rebours jusqu’au 15 octobre - Première mondiale",
     date: "15 octobre 2026",
-    zone: "Heure de Rome",
+    zone: "Heure de Gaza",
     days: "Jours",
     hours: "Heures",
     minutes: "Minutes",
@@ -58,7 +58,7 @@ const copy = {
   tr: {
     title: "15 Ekim’e geri sayım - Dünya prömiyeri",
     date: "15 Ekim 2026",
-    zone: "Roma saati",
+    zone: "Gazze saati",
     days: "Gün",
     hours: "Saat",
     minutes: "Dakika",
