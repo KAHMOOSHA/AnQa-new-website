@@ -48,4 +48,5 @@ export const internationalVenues = [
   {"id":"svezia-stoccolma","name":"Theatre Tribunalen","country":"Svezia","region":null,"province":null,"municipality":"Stoccolma","address":"Hornsgatan 92 T-Zinkensdamm","organizer":"Theatre Tribunalen","credits":"Björn Wahlberg, Britt-Louise Tillbom"},
   {"id":"svizzera-1","name":"Università di Ginevra","country":"Svizzera","region":null,"province":null,"municipality":"Ginevra","address":"102 bvd Carl Vogt, 1205 Geneva","credits":"Meret Mohr Millner, Marin Aelig, Étéocle Alric, Marie Bondolfi, Technical help: Haydée García Buscaglione"},
   {"id":"svizzera-2","name":"Teatro Paravento","country":"Svizzera","region":null,"province":null,"municipality":"Locarno","address":"Via Cappuccini 8, 6600"},
+  {"id":"turkiye-istanbul-kopuzlar-yurdu","name":"Kopuzlar Yurdu","country":"Turchia","region":null,"province":null,"municipality":"İstanbul","address":null,"organizer":"Ibrahim Alhelou","credits":"Halil İbrahim Özken, Ahmet Taşçı"},
 ] as const satisfies readonly ParticipatingVenue[];
