@@ -32,6 +32,7 @@ export const internationalVenues = [
   {"id":"messico-2","name":"Casa Refugio de la Memoria","country":"Messico","region":null,"province":null,"municipality":"Ciudad de Mexico","address":"Citlaltépetl 25, Hipódromo, Cuauhtémoc, 06100"},
   {"id":"messico-3","name":"ESCENA 4-44","country":"Messico","region":null,"province":null,"municipality":"Ciudad de Mexico","address":"Col San Pedro de los Pinos, Calle 18 #27-b","organizer":"El cuerpo vivo"},
   {"id":"messico-4","name":null,"country":"Messico","region":"Oaxaca","province":null,"municipality":"Mazunte","address":null},
+  {"id":"norvegia-oslo-agora-lilleborg","name":"Agora Lilleborg","country":"Norvegia","region":null,"province":null,"municipality":"Oslo","address":"Bjørndals gate 23","organizer":"Agora Lilleborg","time":"18:00","credits":"Tov Sletta, Iselin Shumba, Eldar Skar, Patrick Raugstad, Malena Chronholm Bøyesen"},
   {"id":"nuova-zelanda-1","name":"Sumud Ensemble","country":"Nuova Zelanda","region":null,"province":null,"municipality":"Aotearoa","address":null},
   {"id":"paesi-bassi-1","name":"AstaroTheatro","country":"Paesi Bassi","region":null,"province":null,"municipality":"Amsterdam","address":"Sint Jansstraat 37, 1012 HG"},
   {"id":"paesi-bassi-2","name":"Theater Utrecht","country":"Paesi Bassi","region":null,"province":null,"municipality":"Utrecht","address":"Boorstraat 107, 3513 SE"},

@@ -61,6 +61,7 @@ const countryNames: Record<Language, Record<string, string>> = {
   en: {
     Canada: "Canada",
     Svezia: "Sweden",
+    Norvegia: "Norway",
     Turchia: "Türkiye",
     "Argentina": "Argentina",
     "Belgio": "Belgium",
@@ -89,6 +90,7 @@ const countryNames: Record<Language, Record<string, string>> = {
   ar: {
     Canada: "كندا",
     Svezia: "السويد",
+    Norvegia: "النرويج",
     Turchia: "تركيا",
     "Argentina": "الأرجنتين",
     "Belgio": "بلجيكا",
@@ -118,6 +120,7 @@ const countryNames: Record<Language, Record<string, string>> = {
   fr: {
     Canada: "Canada",
     Svezia: "Suède",
+    Norvegia: "Norvège",
     Turchia: "Turquie",
     "Argentina": "Argentine",
     "Belgio": "Belgique",
@@ -146,6 +149,7 @@ const countryNames: Record<Language, Record<string, string>> = {
   tr: {
     Canada: "Kanada",
     Svezia: "İsveç",
+    Norvegia: "Norveç",
     Turchia: "Türkiye",
     "Argentina": "Arjantin",
     "Belgio": "Belçika",
