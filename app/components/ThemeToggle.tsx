@@ -19,16 +19,22 @@ export function ThemeToggle({ language }: { language: Language }) {
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    const activeTheme =
-      document.documentElement.dataset.theme === "light" ? "light" : "dark";
-    setTheme(activeTheme);
+    const deviceTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    const followDeviceTheme = () => {
+      const nextTheme: Theme = deviceTheme.matches ? "dark" : "light";
+      document.documentElement.dataset.theme = nextTheme;
+      setTheme(nextTheme);
+    };
+
+    followDeviceTheme();
+    deviceTheme.addEventListener("change", followDeviceTheme);
+    return () => deviceTheme.removeEventListener("change", followDeviceTheme);
   }, []);
 
   function toggleTheme() {
     const nextTheme: Theme = theme === "dark" ? "light" : "dark";
 
     document.documentElement.dataset.theme = nextTheme;
-    localStorage.setItem("anqa-theme", nextTheme);
     setTheme(nextTheme);
   }
 

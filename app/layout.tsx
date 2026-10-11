@@ -8,8 +8,7 @@ import "./globals.css";
 
 const themeBootstrapScript = `
   try {
-    const savedTheme = localStorage.getItem("anqa-theme");
-    document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   } catch {
     document.documentElement.dataset.theme = "dark";
   }

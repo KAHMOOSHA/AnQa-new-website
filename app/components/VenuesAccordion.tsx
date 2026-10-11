@@ -25,6 +25,13 @@ type VenuesAccordionProps = {
   countries: readonly VenueCountry[];
   cityPending: string;
   venuePending: string;
+  detailLabels: VenueDetailLabels;
+};
+
+export type VenueDetailLabels = {
+  time: string;
+  organizer: string;
+  credits: string;
 };
 
 function groupBy<T>(items: readonly T[], key: (item: T) => string) {
@@ -79,14 +86,21 @@ function VenueList({
   venues,
   cityPending,
   venuePending,
+  detailLabels,
 }: {
   venues: readonly ParticipatingVenue[];
   cityPending: string;
   venuePending: string;
+  detailLabels: VenueDetailLabels;
 }) {
   const cities = groupBy(
     venues,
-    (venue) => venue.municipality ?? venue.province ?? cityPending,
+    (venue) => {
+      const city = venue.municipality ?? venue.province ?? cityPending;
+      return venue.country !== "Italia" && venue.region
+        ? `${city} (${venue.region})`
+        : city;
+    },
   );
 
   return (
@@ -107,6 +121,28 @@ function VenueList({
                 {venue.address && (
                   <span className={styles.address} dir="auto">{venue.address}</span>
                 )}
+                {(venue.time || venue.organizer || venue.credits) && (
+                  <dl className={styles.venueDetails}>
+                    {venue.time && (
+                      <div>
+                        <dt>{detailLabels.time}</dt>
+                        <dd><time dateTime={venue.time} dir="ltr">{venue.time}</time></dd>
+                      </div>
+                    )}
+                    {venue.organizer && (
+                      <div>
+                        <dt>{detailLabels.organizer}</dt>
+                        <dd><bdi>{venue.organizer}</bdi></dd>
+                      </div>
+                    )}
+                    {venue.credits && (
+                      <div>
+                        <dt>{detailLabels.credits}</dt>
+                        <dd><bdi>{venue.credits}</bdi></dd>
+                      </div>
+                    )}
+                  </dl>
+                )}
               </li>
             ))}
           </ul>
@@ -120,10 +156,12 @@ function CountryAccordion({
   country,
   cityPending,
   venuePending,
+  detailLabels,
 }: {
   country: VenueCountry;
   cityPending: string;
   venuePending: string;
+  detailLabels: VenueDetailLabels;
 }) {
   return (
     <LazyAccordionItem
@@ -145,6 +183,7 @@ function CountryAccordion({
                   venues={region.venues}
                   cityPending={cityPending}
                   venuePending={venuePending}
+                  detailLabels={detailLabels}
                 />
               </LazyAccordionItem>
             ))}
@@ -154,6 +193,7 @@ function CountryAccordion({
             venues={country.venues ?? []}
             cityPending={cityPending}
             venuePending={venuePending}
+            detailLabels={detailLabels}
           />
         )}
       </div>
@@ -166,6 +206,7 @@ export function VenuesAccordion({
   countries,
   cityPending,
   venuePending,
+  detailLabels,
 }: VenuesAccordionProps) {
   return (
     <div className={styles.accordion}>
@@ -173,6 +214,7 @@ export function VenuesAccordion({
         country={italy}
         cityPending={cityPending}
         venuePending={venuePending}
+        detailLabels={detailLabels}
       />
       {countries.map((country) => (
         <CountryAccordion
@@ -180,6 +222,7 @@ export function VenuesAccordion({
           cityPending={cityPending}
           key={country.id}
           venuePending={venuePending}
+          detailLabels={detailLabels}
         />
       ))}
     </div>

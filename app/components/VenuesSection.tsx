@@ -1,5 +1,5 @@
 import { participatingVenues } from "../data/participatingVenues";
-import { VenuesAccordion } from "./VenuesAccordion";
+import { VenuesAccordion, type VenueDetailLabels } from "./VenuesAccordion";
 import styles from "./VenuesSection.module.css";
 
 type Language = "en" | "ar" | "it" | "fr" | "tr";
@@ -9,6 +9,7 @@ type Copy = {
   listUpdating: string;
   cityPending: string;
   venuePending: string;
+  details: VenueDetailLabels;
   venueCount: (count: number) => string;
 };
 
@@ -18,6 +19,7 @@ const copy: Record<Language, Copy> = {
     listUpdating: "This list is being updated *",
     cityPending: "City to be announced",
     venuePending: "Venue to be announced",
+    details: { time: "Time", organizer: "Organized by", credits: "Cast and credits" },
     venueCount: (count) => `${count} ${count === 1 ? "venue" : "venues"}`,
   },
   ar: {
@@ -25,6 +27,7 @@ const copy: Record<Language, Copy> = {
     listUpdating: "* يجري تحديث هذه القائمة",
     cityPending: "سيُعلن عن المدينة قريباً",
     venuePending: "سيُعلن عن المكان قريباً",
+    details: { time: "الوقت", organizer: "تنظيم", credits: "المشاركون وفريق العمل" },
     venueCount: (count) => `${count} ${count === 1 ? "مكان" : "أماكن"}`,
   },
   it: {
@@ -33,6 +36,7 @@ const copy: Record<Language, Copy> = {
     listUpdating: "Questo elenco è in fase di aggiornamento *",
     cityPending: "Città da annunciare",
     venuePending: "Sede da annunciare",
+    details: { time: "Orario", organizer: "Organizza", credits: "Cast e crediti" },
     venueCount: (count) => `${count} ${count === 1 ? "sede" : "sedi"}`,
   },
   fr: {
@@ -40,6 +44,7 @@ const copy: Record<Language, Copy> = {
     listUpdating: "Cette liste est en cours de mise à jour *",
     cityPending: "Ville à confirmer",
     venuePending: "Lieu à confirmer",
+    details: { time: "Horaire", organizer: "Organisation", credits: "Distribution et crédits" },
     venueCount: (count) => `${count} ${count === 1 ? "lieu" : "lieux"}`,
   },
   tr: {
@@ -47,12 +52,15 @@ const copy: Record<Language, Copy> = {
     listUpdating: "Bu liste güncellenmektedir *",
     cityPending: "Şehir daha sonra duyurulacak",
     venuePending: "Mekân daha sonra duyurulacak",
+    details: { time: "Saat", organizer: "Düzenleyen", credits: "Oyuncular ve ekip" },
     venueCount: (count) => `${count} ${count === 1 ? "mekân" : "mekân"}`,
   },
 };
 
 const countryNames: Record<Language, Record<string, string>> = {
   en: {
+    Canada: "Canada",
+    Svezia: "Sweden",
     "Argentina": "Argentina",
     "Belgio": "Belgium",
     "Colombia": "Colombia",
@@ -78,6 +86,8 @@ const countryNames: Record<Language, Record<string, string>> = {
     Svizzera: "Switzerland",
   },
   ar: {
+    Canada: "كندا",
+    Svezia: "السويد",
     "Argentina": "الأرجنتين",
     "Belgio": "بلجيكا",
     "Colombia": "كولومبيا",
@@ -104,6 +114,8 @@ const countryNames: Record<Language, Record<string, string>> = {
   },
   it: {},
   fr: {
+    Canada: "Canada",
+    Svezia: "Suède",
     "Argentina": "Argentine",
     "Belgio": "Belgique",
     "Colombia": "Colombie",
@@ -129,6 +141,8 @@ const countryNames: Record<Language, Record<string, string>> = {
     Svizzera: "Suisse",
   },
   tr: {
+    Canada: "Kanada",
+    Svezia: "İsveç",
     "Argentina": "Arjantin",
     "Belgio": "Belçika",
     "Colombia": "Kolombiya",
@@ -203,6 +217,7 @@ export function VenuesSection({ language }: { language: Language }) {
         countries={countries}
         cityPending={t.cityPending}
         venuePending={t.venuePending}
+        detailLabels={t.details}
       />
     </section>
   );

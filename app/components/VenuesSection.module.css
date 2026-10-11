@@ -207,6 +207,31 @@
   overflow-wrap: anywhere;
 }
 
+.venueDetails {
+  display: grid;
+  font-size: 0.82rem;
+  font-style: normal;
+  gap: 0.35rem;
+  line-height: 1.6;
+  margin: 0.45rem 0 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.venueDetails dt {
+  color: var(--page-text);
+  display: inline;
+  font-weight: 700;
+}
+
+.venueDetails dt::after {
+  content: ": ";
+}
+
+.venueDetails dd {
+  display: inline;
+  margin: 0;
+}
+
 @keyframes reveal {
   from {
     opacity: 0;
