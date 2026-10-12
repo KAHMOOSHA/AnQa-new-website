@@ -32,6 +32,7 @@ export type VenueDetailLabels = {
   time: string;
   organizer: string;
   credits: string;
+  notes: string;
 };
 
 function groupBy<T>(items: readonly T[], key: (item: T) => string) {
@@ -121,7 +122,7 @@ function VenueList({
                 {venue.address && (
                   <span className={styles.address} dir="auto">{venue.address}</span>
                 )}
-                {(venue.time || venue.organizer || venue.credits) && (
+                {(venue.time || venue.organizer || venue.credits || venue.notes) && (
                   <dl className={styles.venueDetails}>
                     {venue.time && (
                       <div>
@@ -139,6 +140,12 @@ function VenueList({
                       <div>
                         <dt>{detailLabels.credits}</dt>
                         <dd><bdi>{venue.credits}</bdi></dd>
+                      </div>
+                    )}
+                    {venue.notes && (
+                      <div>
+                        <dt>{detailLabels.notes}</dt>
+                        <dd><bdi>{venue.notes}</bdi></dd>
                       </div>
                     )}
                   </dl>

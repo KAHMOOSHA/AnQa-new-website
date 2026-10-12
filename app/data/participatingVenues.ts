@@ -12,6 +12,7 @@ export type ParticipatingVenue = {
   organizer?: string;
   time?: string;
   credits?: string;
+  notes?: string;
 };
 
 export const participatingVenues: readonly ParticipatingVenue[] = [
