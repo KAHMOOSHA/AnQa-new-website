@@ -127,7 +127,14 @@ function VenueList({
                     {venue.time && (
                       <div>
                         <dt>{detailLabels.time}</dt>
-                        <dd><time dateTime={venue.time} dir="ltr">{venue.time}</time></dd>
+                        <dd>
+                          <bdi dir="ltr">
+                            <time dateTime={venue.time}>{venue.time}</time>
+                            {venue.endTime && (
+                              <> – <time dateTime={venue.endTime}>{venue.endTime}</time></>
+                            )}
+                          </bdi>
+                        </dd>
                       </div>
                     )}
                     {venue.organizer && (

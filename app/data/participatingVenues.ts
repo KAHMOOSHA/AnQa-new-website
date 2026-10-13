@@ -11,6 +11,7 @@ export type ParticipatingVenue = {
   address?: string | null;
   organizer?: string;
   time?: string;
+  endTime?: string;
   credits?: string;
   notes?: string;
 };
