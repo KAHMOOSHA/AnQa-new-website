@@ -59,6 +59,7 @@ const copy: Record<Language, Copy> = {
 
 const countryNames: Record<Language, Record<string, string>> = {
   en: {
+    Indonesia: "Indonesia",
     Canada: "Canada",
     Svezia: "Sweden",
     Norvegia: "Norway",
@@ -92,6 +93,7 @@ const countryNames: Record<Language, Record<string, string>> = {
     Svizzera: "Switzerland",
   },
   ar: {
+    Indonesia: "إندونيسيا",
     Canada: "كندا",
     Svezia: "السويد",
     Norvegia: "النرويج",
@@ -126,6 +128,7 @@ const countryNames: Record<Language, Record<string, string>> = {
   },
   it: {},
   fr: {
+    Indonesia: "Indonésie",
     Canada: "Canada",
     Svezia: "Suède",
     Norvegia: "Norvège",
@@ -159,6 +162,7 @@ const countryNames: Record<Language, Record<string, string>> = {
     Svizzera: "Suisse",
   },
   tr: {
+    Indonesia: "Endonezya",
     Canada: "Kanada",
     Svezia: "İsveç",
     Norvegia: "Norveç",
