@@ -48,13 +48,13 @@ function AccordionToggle({
   detail,
 }: {
   title: string;
-  detail: string;
+  detail?: string;
 }) {
   return (
     <summary>
       <span className={styles.summaryCopy}>
         <strong>{title}</strong>
-        <small>{detail}</small>
+        {detail && <small>{detail}</small>}
       </span>
       <span className={styles.arrow} aria-hidden="true" />
     </summary>
@@ -106,62 +106,81 @@ function VenueList({
 
   return (
     <div className={styles.cityList}>
-      {[...cities].map(([city, cityVenues]) => (
-        <section className={styles.city} key={city}>
-          <p className={styles.cityName}>
-            <MapPin aria-hidden="true" />
-            {city}
-          </p>
-          <ul>
-            {cityVenues.map((venue) => (
-              <li
-                className={!venue.name ? styles.pending : undefined}
-                key={venue.id}
-              >
-                <span dir="auto">{venue.name ?? venuePending}</span>
-                {venue.address && (
-                  <span className={styles.address} dir="auto">{venue.address}</span>
-                )}
-                {(venue.time || venue.organizer || venue.credits || venue.notes) && (
-                  <dl className={styles.venueDetails}>
-                    {venue.time && (
-                      <div>
-                        <dt>{detailLabels.time}</dt>
-                        <dd>
-                          <bdi dir="ltr">
-                            <time dateTime={venue.time}>{venue.time}</time>
-                            {venue.endTime && (
-                              <> – <time dateTime={venue.endTime}>{venue.endTime}</time></>
-                            )}
-                          </bdi>
-                        </dd>
-                      </div>
-                    )}
-                    {venue.organizer && (
-                      <div>
-                        <dt>{detailLabels.organizer}</dt>
-                        <dd><bdi>{venue.organizer}</bdi></dd>
-                      </div>
-                    )}
-                    {venue.credits && (
-                      <div>
-                        <dt>{detailLabels.credits}</dt>
-                        <dd><bdi>{venue.credits}</bdi></dd>
-                      </div>
-                    )}
-                    {venue.notes && (
-                      <div>
-                        <dt>{detailLabels.notes}</dt>
-                        <dd><bdi>{venue.notes}</bdi></dd>
-                      </div>
-                    )}
-                  </dl>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+      {[...cities].map(([city, cityVenues]) => {
+        const isGaza = city === "Gaza" && cityVenues.every(
+          (venue) => venue.country === "Palestina",
+        );
+        const content = (
+          <section className={styles.city}>
+            {!isGaza && (
+              <p className={styles.cityName}>
+                <MapPin aria-hidden="true" />
+                {city}
+              </p>
+            )}
+            <ul>
+              {cityVenues.map((venue) => (
+                <li
+                  className={!venue.name ? styles.pending : undefined}
+                  key={venue.id}
+                >
+                  <span dir="auto">{venue.name ?? venuePending}</span>
+                  {venue.address && (
+                    <span className={styles.address} dir="auto">{venue.address}</span>
+                  )}
+                  {(venue.time || venue.organizer || venue.credits || venue.notes) && (
+                    <dl className={styles.venueDetails}>
+                      {venue.time && (
+                        <div>
+                          <dt>{detailLabels.time}</dt>
+                          <dd>
+                            <bdi dir="ltr">
+                              <time dateTime={venue.time}>{venue.time}</time>
+                              {venue.endTime && (
+                                <> – <time dateTime={venue.endTime}>{venue.endTime}</time></>
+                              )}
+                            </bdi>
+                          </dd>
+                        </div>
+                      )}
+                      {venue.organizer && (
+                        <div>
+                          <dt>{detailLabels.organizer}</dt>
+                          <dd><bdi>{venue.organizer}</bdi></dd>
+                        </div>
+                      )}
+                      {venue.credits && (
+                        <div>
+                          <dt>{detailLabels.credits}</dt>
+                          <dd><bdi>{venue.credits}</bdi></dd>
+                        </div>
+                      )}
+                      {venue.notes && (
+                        <div>
+                          <dt>{detailLabels.notes}</dt>
+                          <dd><bdi>{venue.notes}</bdi></dd>
+                        </div>
+                      )}
+                    </dl>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+
+        return isGaza ? (
+          <LazyAccordionItem
+            className={styles.country}
+            key={city}
+            summary={<AccordionToggle title={city} />}
+          >
+            <div className={styles.countryContent}>{content}</div>
+          </LazyAccordionItem>
+        ) : (
+          <div key={city}>{content}</div>
+        );
+      })}
     </div>
   );
 }

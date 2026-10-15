@@ -15,7 +15,7 @@ const copy = {
     hours: "Hours",
     minutes: "Minutes",
     seconds: "Seconds",
-    ended: "The countdown has ended.",
+    ended: "Today, Palestinians Are Your Eyes comes to stages around the world.",
     near: "Look for the reading nearest to you",
     nearLink: "View venues",
   },
@@ -27,7 +27,7 @@ const copy = {
     hours: "ساعات",
     minutes: "دقائق",
     seconds: "ثوانٍ",
-    ended: "انتهى العد التنازلي.",
+    ended: "اليوم، يُقدَّم «الفلسطينيون هم عيونكم» على مسارح حول العالم.",
     near: "ابحث عن القراءة الأقرب إليك",
     nearLink: "عرض الأماكن",
   },
@@ -39,7 +39,7 @@ const copy = {
     hours: "Ore",
     minutes: "Minuti",
     seconds: "Secondi",
-    ended: "Il conto alla rovescia è terminato.",
+    ended: "Oggi, Palestinians Are Your Eyes va in scena in tutto il mondo.",
     near: "Cerca la lettura più vicina a te",
     nearLink: "Vedi i luoghi",
   },
@@ -51,7 +51,7 @@ const copy = {
     hours: "Heures",
     minutes: "Minutes",
     seconds: "Secondes",
-    ended: "Le compte à rebours est terminé.",
+    ended: "Aujourd’hui, Palestinians Are Your Eyes se joue sur les scènes du monde entier.",
     near: "Trouvez la lecture la plus proche de chez vous",
     nearLink: "Voir les lieux",
   },
@@ -63,7 +63,7 @@ const copy = {
     hours: "Saat",
     minutes: "Dakika",
     seconds: "Saniye",
-    ended: "Geri sayım sona erdi.",
+    ended: "Bugün Palestinians Are Your Eyes dünyanın dört bir yanında sahneleniyor.",
     near: "En yakın okumayı bulun",
     nearLink: "Mekânları görün",
   },
@@ -104,6 +104,9 @@ export function EventCountdown({ language }: { language: Language }) {
         <time dateTime={COUNTDOWN_TARGET}>{t.date}</time>
         <span>{t.zone}</span>
       </div>
+      {remaining?.ended ? (
+        <p className={styles.ended} role="status">{t.ended}</p>
+      ) : (
       <div role="timer" aria-label={t.title} aria-live="off">
         <dl className={styles.units}>
           {units.map((unit) => (
@@ -115,8 +118,8 @@ export function EventCountdown({ language }: { language: Language }) {
             </div>
           ))}
         </dl>
-        {remaining?.ended && <p className={styles.ended}>{t.ended}</p>}
       </div>
+      )}
       <h3 className={styles.venuesPrompt}>
         <span>{t.near}</span>
         <Link className={styles.venuesLink} href={`/${language}/venues`}>
